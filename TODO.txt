@@ -1,0 +1,52 @@
+﻿Issues:
+	Duplicate MasterPage does not work? Login not working...
+	Cart unable to delete/update items in cart.aspx
+
+
+: Remove info in login.aspx & forget_password.aspx
+
+
+Limitations:
+	Unable to purchase same clothe but different size/colour - Only 1 type
+------
+
+Standard Features:
+•   Consistent Professional, responsive design with Master page, Bootstrap and CSS built on web forms
+•   Search Feature 
+•   Charts Data from Database
+•   Product catalog has at least 20 displayed using Repeater or other server-side controls. Products belonging to two or more categories
+•   Data Retrieval and insertion (CRUD) using stored procedures
+
+Interactive Features:
+•   Interactive Carrousel or gallery equivalent displaying images that are database driven  
+•   Product Ratings Feature  (more marks if data from database)
+
+Bonus Feature:
+•   Additional Creative Modules (Eg. Shopping Cart, Checkout), Interactive Feature, A.I, Analytics or Other New Technology employed
+•	Website fully deployed on external server
+
+
+
+Website Security: 	 
+
+Authentication Feature:
+•   Login and Logout using Sessions
+•   Password is encrypted / Hashed
+•   Password complexity check
+
+Authorization Feature:
+•   Has at least 2 user roles, Eg. admin and members, with different views for different roles after login
+
+Multi factor authentication:
+•	OTP, Security Questions, PIN, equivalent
+
+Extended Security Features:
+•	URL hiding, preventive page access through redirection, SSL, SQL Injection prevention 
+
+
+Bonus Security Features	Other Security Features. Eg: 
+•	Forget Password
+•	Account Verification (Email or other means),
+•	External Authentication (Eg Google or Facebook) 
+•	Facial or Thumbprint Login
+•	Or other modern techniques of securing web applications  
