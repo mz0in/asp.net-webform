@@ -18,12 +18,13 @@ namespace AWAD_Assignment.routes {
             //    Repeater1.DataSource = Repeater1.DataSource;
             //    Repeater1.DataBind();
             //}
+            if (!IsPostBack) {
+                DataSet dataset = GetCartItems();
+                if (dataset == null) return;
 
-            DataSet dataset = GetCartItems();
-            if (dataset == null) return;
-
-            Repeater1.DataSource = dataset;
-            Repeater1.DataBind();
+                Repeater1.DataSource = dataset;
+                Repeater1.DataBind();
+            }
 
             /*
             Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
@@ -101,7 +102,6 @@ namespace AWAD_Assignment.routes {
                 //Response.Redirect(Request.Url.AbsoluteUri);
             }
         }
-
         protected void Button_UpdateCart_Click(object sender, EventArgs e) {
             Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
 
@@ -121,18 +121,15 @@ namespace AWAD_Assignment.routes {
                 //Debug.WriteLine("{0} - {1} - {2} - {3} - {4} - {5}", image_control.ImageUrl, name_control.Text, id_control.Text, price_control.Text, quantity_control.Text, total_control.Text);
                 Debug.WriteLine("QTY: " + quantity_control.Text);
 
-                //if (int.Parse(quantity_control.Text) == 0) {
-                //    carts.Remove(id_control.Text);
-                //} else {
-                //    carts[id_control.Text].item_quantity = int.Parse(quantity_control.Text);
-                //}
-                //Session["cart"] = carts;
-                //Response.Redirect(Request.Url.AbsoluteUri);
+                if (int.Parse(quantity_control.Text) == 0) {
+                    carts.Remove(id_control.Text);
+                } else {
+                    carts[id_control.Text].item_quantity = int.Parse(quantity_control.Text);
+                }
             }
+            Session["cart"] = carts;
+            Response.Redirect(Request.Url.AbsoluteUri);
         }
-        //private void R1_ItemCommand(Object Sender, RepeaterCommandEventArgs e) {
-        //    Label2.Text = "The " + ((Button)e.CommandSource).Text + " button has just been clicked; <br />";
-        //}
         protected void R1_ItemCommand(object source, RepeaterCommandEventArgs e) {
             //====== Here we use switch state to distinguish which link button is clicked based 
             //====== on command name supplied to the link button.

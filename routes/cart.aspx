@@ -50,7 +50,6 @@
                                         <td>
                                             <div class="media">
                                                 <div class="d-flex">
-                                                    <%--<img src="../assets/img/arrivel/arrivel_1.png" alt="" />--%>
                                                     <asp:Image runat="server" ImageUrl='<%# Eval("image")%>' ID="Image_Checkout" />
                                                 </div>
                                                 <div class="media-body">
