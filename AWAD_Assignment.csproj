@@ -146,45 +146,6 @@
     <Content Include="assets\img\banner_img.png" />
     <Content Include="assets\img\banner_pattern.png" />
     <Content Include="assets\img\banner_shape.png" />
-    <Content Include="assets\img\blog\add.jpg" />
-    <Content Include="assets\img\blog\author.png" />
-    <Content Include="assets\img\blog\blog1.png" />
-    <Content Include="assets\img\blog\blog2.png" />
-    <Content Include="assets\img\blog\blog3.png" />
-    <Content Include="assets\img\blog\blog_1.png" />
-    <Content Include="assets\img\blog\blog_2.png" />
-    <Content Include="assets\img\blog\blog_3.png" />
-    <Content Include="assets\img\blog\blog_4.png" />
-    <Content Include="assets\img\blog\c1.png" />
-    <Content Include="assets\img\blog\c2.png" />
-    <Content Include="assets\img\blog\c3.png" />
-    <Content Include="assets\img\blog\cat-post\cat-post-1.jpg" />
-    <Content Include="assets\img\blog\cat-post\cat-post-2.jpg" />
-    <Content Include="assets\img\blog\cat-post\cat-post-3.jpg" />
-    <Content Include="assets\img\blog\causes\causes-1.jpg" />
-    <Content Include="assets\img\blog\causes\causes-2.jpg" />
-    <Content Include="assets\img\blog\causes\causes-3.jpg" />
-    <Content Include="assets\img\blog\feature-img1.jpg" />
-    <Content Include="assets\img\blog\learn_about_bg.png" />
-    <Content Include="assets\img\blog\main-blog\m-blog-1.jpg" />
-    <Content Include="assets\img\blog\main-blog\m-blog-2.jpg" />
-    <Content Include="assets\img\blog\main-blog\m-blog-3.jpg" />
-    <Content Include="assets\img\blog\main-blog\m-blog-4.jpg" />
-    <Content Include="assets\img\blog\main-blog\m-blog-5.jpg" />
-    <Content Include="assets\img\blog\next.jpg" />
-    <Content Include="assets\img\blog\popular-post\post1.jpg" />
-    <Content Include="assets\img\blog\popular-post\post2.jpg" />
-    <Content Include="assets\img\blog\popular-post\post3.jpg" />
-    <Content Include="assets\img\blog\popular-post\post4.jpg" />
-    <Content Include="assets\img\blog\post-img1.jpg" />
-    <Content Include="assets\img\blog\post-img2.jpg" />
-    <Content Include="assets\img\blog\prev.jpg" />
-    <Content Include="assets\img\blog\single_blog_1.png" />
-    <Content Include="assets\img\blog\single_blog_2.png" />
-    <Content Include="assets\img\blog\single_blog_3.png" />
-    <Content Include="assets\img\blog\single_blog_4.png" />
-    <Content Include="assets\img\blog\single_blog_5.png" />
-    <Content Include="assets\img\blog\slide_thumb_1.png" />
     <Content Include="assets\img\categori\card-man.png" />
     <Content Include="assets\img\categori\card-shape.png" />
     <Content Include="assets\img\categori\card.png" />
@@ -306,29 +267,6 @@
     <Content Include="assets\img\offers\1.png" />
     <Content Include="assets\img\offers\2.png" />
     <Content Include="assets\img\offers\3.png" />
-    <Content Include="assets\img\our_blog\blog-img1.jpg" />
-    <Content Include="assets\img\post\next.png" />
-    <Content Include="assets\img\post\post_1.png" />
-    <Content Include="assets\img\post\post_10.png" />
-    <Content Include="assets\img\post\post_2.png" />
-    <Content Include="assets\img\post\post_3.png" />
-    <Content Include="assets\img\post\post_4.png" />
-    <Content Include="assets\img\post\post_5.png" />
-    <Content Include="assets\img\post\post_6.png" />
-    <Content Include="assets\img\post\post_7.png" />
-    <Content Include="assets\img\post\post_8.png" />
-    <Content Include="assets\img\post\post_9.png" />
-    <Content Include="assets\img\post\preview.png" />
-    <Content Include="assets\img\prising\1.png" />
-    <Content Include="assets\img\prising\10.png" />
-    <Content Include="assets\img\prising\2.png" />
-    <Content Include="assets\img\prising\3.png" />
-    <Content Include="assets\img\prising\4.png" />
-    <Content Include="assets\img\prising\5.png" />
-    <Content Include="assets\img\prising\6.png" />
-    <Content Include="assets\img\prising\7.png" />
-    <Content Include="assets\img\prising\8.png" />
-    <Content Include="assets\img\prising\9.png" />
     <Content Include="assets\img\product\product_list_1.png" />
     <Content Include="assets\img\product\product_list_10.png" />
     <Content Include="assets\img\product\product_list_2.png" />
@@ -920,7 +858,7 @@
     <Content Include="routes\error\500.html" />
     <Content Include="routes\error\error.html" />
     <Content Include="routes\forget_password.aspx" />
-    <Content Include="routes\index.aspx" />
+    <Content Include="routes\default.aspx" />
     <Content Include="routes\login.aspx" />
     <Content Include="routes\product_list_men.aspx" />
     <Content Include="routes\product_list_women.aspx" />
@@ -978,12 +916,12 @@
     <Compile Include="routes\forget_password.aspx.designer.cs">
       <DependentUpon>forget_password.aspx</DependentUpon>
     </Compile>
-    <Compile Include="routes\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="routes\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="routes\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="routes\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="BeforeLogin.Master.cs">
       <DependentUpon>BeforeLogin.Master</DependentUpon>

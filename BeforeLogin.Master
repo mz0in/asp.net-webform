@@ -83,7 +83,7 @@
                                     <!-- Logo -->
                                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
                                         <div class="logo">
-                                            <a href="index.aspx">
+                                            <a href="default.aspx">
                                                 <img src="../assets/img/logo/logo.png" alt=""></a>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                         <div class="main-menu f-right d-none d-lg-block">
                                             <nav>
                                                 <ul id="navigation">
-                                                    <li><a href="index.aspx">Home</a></li>
+                                                    <li><a href="default.aspx">Home</a></li>
                                                     <!--
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
@@ -206,7 +206,7 @@
                                     <div class="single-footer-caption mb-30">
                                         <!-- logo -->
                                         <div class="footer-logo">
-                                            <a href="index.aspx">
+                                            <a href="default.aspx">
                                                 <img src="../assets/img/logo/logo2_footer.png" alt=""></a>
                                         </div>
                                         <div class="footer-tittle">

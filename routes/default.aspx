@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BeforeLogin.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="AWAD_Assignment.routes.index1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BeforeLogin.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="AWAD_Assignment.routes.index1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">Estore V2</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
@@ -39,7 +39,7 @@
                                     <p data-animation="fadeInRight" data-delay=".8s">Best Cloth Collection By 2020!</p>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                                        <a href="#" class="btn hero-btn">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                     <p data-animation="fadeInRight" data-delay=".8s">Best Cloth Collection By 2020!</p>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                                        <a href="#" class="btn hero-btn">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -91,8 +91,8 @@
                             <div class="category-img">
                                 <img src="../assets/img/categori/cat1.jpg" alt="">
                                 <div class="category-caption">
-                                    <h2>Owmen`s</h2>
-                                    <span class="best"><a href="#">Best New Deals</a></span>
+                                    <h2>Women`s</h2>
+                                    <span class="best"><a href="product_list_women.aspx?q=tops">Best New Deals</a></span>
                                     <span class="collection">New Collection</span>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <img src="../assets/img/categori/cat3.jpg" alt="">
                                 <div class="category-caption">
                                     <h2>Man`s Cloth</h2>
-                                    <span class="best"><a href="#">Best New Deals</a></span>
+                                    <span class="best"><a href="product_list_men.aspx?q=tops">Best New Deals</a></span>
                                     <span class="collection">New Collection</span>
                                 </div>
                             </div>

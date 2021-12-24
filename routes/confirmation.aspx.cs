@@ -22,7 +22,7 @@ namespace AWAD_Assignment.routes
                 Label_street.Text = shippAddr[0];
                 Label_Zipcode.Text = shippAddr[1];
             } catch (NullReferenceException) {
-                Response.Redirect(ResolveClientUrl("index.aspx"));
+                Response.Redirect(ResolveClientUrl("default.aspx"));
             }
 
             DataSet dataset = GetCartItems();

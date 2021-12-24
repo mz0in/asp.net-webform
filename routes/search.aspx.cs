@@ -85,7 +85,7 @@ namespace AWAD_Assignment.routes
 
             } else {
                 //Return absolute path with params "q"
-                Response.Redirect(ResolveClientUrl("index.aspx"));
+                Response.Redirect(ResolveClientUrl("default.aspx"));
             }            
         }
     }
