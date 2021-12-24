@@ -149,7 +149,7 @@
                                                 <form id="formSearch">
                                                     <div class="form-box f-right ">
                                                         <!-- <input type="text" name="Search" placeholder="Search products"> <!-- TODO: search with form? -->
-                                                        <asp:TextBox ID="TextBox_Search" AutoPostBack="true" Placeholder="Search products" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="TextBox_Search" Placeholder="Search products" runat="server"></asp:TextBox>
                                                         <div class="search-icon">
                                                             <i class="fas fa-search special-tag"></i>
                                                         </div>

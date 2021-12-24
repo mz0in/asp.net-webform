@@ -56,7 +56,7 @@
                                     <div class="single-product mb-60">
                                         <div class="product-img">
                                             <!-- <img src="../assets/img/categori/product1.png" alt=""> -->
-                                            <asp:ImageButton ID="ImageButton_men_TBD" PostBackUrl='<%# ResolveClientUrl("single_product.aspx?id=" + Eval("Id"))%>' ImageUrl='../assets/img/categori/product1.png' runat="server"/>
+<asp:ImageButton ID="ImageButton_men_TBD" PostBackUrl='<%# ResolveClientUrl("single_product.aspx?id=" + Eval("Id"))%>' ImageUrl='<%# "../assets/img/_clothing/carousel/"+Eval("Id")+"/1.jpg"%>' Width="370px" Height="403px" runat="server"/>
 
                                             <!--
                                             <div class="new-product">
@@ -77,7 +77,7 @@
                                             <h4>
                                                 <!-- <a href="#">Green Dress with details</a> -->
                                                 <%--<asp:Label runat="server" Text='<%# Eval("name")%>'></asp:Label>--%>
-                                                <asp:LinkButton runat="server" Text='<%# Eval("name")%>'></asp:LinkButton>
+                                                <asp:LinkButton runat="server" PostBackUrl='<%# ResolveClientUrl("single_product.aspx?id=" + Eval("Id"))%>' Text='<%# Eval("name")%>'></asp:LinkButton>
                                             </h4>
                                             <div class="price">
                                                 <ul>

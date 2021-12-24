@@ -1,7 +1,5 @@
 ﻿Issues:
 	Duplicate MasterPage does not work? Login not working...
-	Cart unable to delete/update items in cart.aspx
-
 
 : Remove info in login.aspx & forget_password.aspx
 

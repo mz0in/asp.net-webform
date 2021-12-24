@@ -20,7 +20,7 @@ namespace AWAD_Assignment.routes
         protected void btnSignIn_Click(object sender, EventArgs e) {
 
             // Creating session cookies
-            Session["Email"] = TextBox_Email.Text;
+            Session["email"] = TextBox_Email.Text;
             //Session["cart"] = new Dictionary<string, Cart>();
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);

@@ -14,6 +14,12 @@ namespace AWAD_Assignment
 
             if(Session["cart"] == null) Session["cart"] = new Dictionary<string, Cart>();
 
+            if (IsPostBack) {
+                if (TextBox_Search.Text.Trim().Length > 0 && TextBox_Search.Text != null && TextBox_Search.Text.ToString() != "") {
+                    Response.Redirect(ResolveUrl("/routes/search.aspx?q=" + Server.HtmlEncode(TextBox_Search.Text)));
+                }
+            }
+
             /* TODO - XSS Prevention  | Secure Practices 
              * https://docs.microsoft.com/en-us/previous-versions/aspnet/ms178270(v=vs.100)     Securing Standard Controls
              * https://docs.microsoft.com/en-us/previous-versions/aspnet/a2a4yykt(v=vs.100)     How to: Protect Against Script Exploits in a Web Application by Applying HTML Encoding to Strings
@@ -22,9 +28,7 @@ namespace AWAD_Assignment
              * https://docs.microsoft.com/en-us/previous-versions/aspnet/f13d73y6(v=vs.100)     Overview of Web Application Security Threats
              */
 
-            if (TextBox_Search.AutoPostBack && TextBox_Search.Text.Trim().Length > 0 && TextBox_Search.Text != null && TextBox_Search.Text.ToString() != "") {
-                Response.Redirect(ResolveUrl("/routes/search.aspx?q=" + Server.HtmlEncode(TextBox_Search.Text)));
-            }
+            
         }
 
         protected void LinkButton_SignOut_Click(object sender, EventArgs e) {

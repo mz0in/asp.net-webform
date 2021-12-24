@@ -96,8 +96,7 @@
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_product_item">
                                             <asp:ImageButton ID="ImageButton_men_TBD" PostBackUrl='<%# ResolveClientUrl("single_product.aspx?id=" + Eval("Id"))%>' ImageUrl='<%# "../assets/img/_clothing/carousel/" + Eval("Id").ToString() + "/1.jpg" %>' runat="server" CssClass="img-fluid" />
-                                            
-                                            <h3><asp:Label ID="Label_name" runat="server" Text='<%# Eval("name")%>'></asp:Label></h3>
+                                            <h3><asp:LinkButton ID="LinkButton_name" PostBackUrl='<%# ResolveClientUrl("single_product.aspx?id=" + Eval("Id"))%>' runat="server" Text='<%# Eval("name")%>'></asp:LinkButton></h3>
                                             <p><asp:Label ID="Label_price" runat="server" Text='<%# string.Format("${0:00.00}", double.Parse(Eval("price").ToString()))%>'></asp:Label></p>
                                         </div>
                                     </div>

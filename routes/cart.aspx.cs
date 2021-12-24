@@ -72,7 +72,7 @@ namespace AWAD_Assignment.routes {
                 
             }
             // Session["subtotal"] = subtotal;
-            Label_SubTotal.Text = string.Format("${0:00.00}", subtotal.ToString());
+            Label_SubTotal.Text = string.Format("${0:00.00}", subtotal);
             return ds;
         }
 

@@ -43,19 +43,22 @@
                         <ul>
                             <li>
                                 <p>order number</p>
-                                <span>: 60235</span>
+                                <span>:
+                                    <asp:Label runat="server" ID="Label_OrderNumber"></asp:Label></span>
                             </li>
                             <li>
                                 <p>date</p>
-                                <span>: Oct 03, 2017</span>
+                                <span>:
+                                    <asp:Label runat="server" ID="Label_Date"></asp:Label></span>
                             </li>
                             <li>
                                 <p>total</p>
-                                <span>: USD 2210</span>
+                                <span>:
+                                    <asp:Label runat="server" ID="Label_total"></asp:Label></span>
                             </li>
                             <li>
                                 <p>payment method</p>
-                                <span>: Check payments</span>
+                                <span>: Stripe payment</span>
                             </li>
                         </ul>
                     </div>
@@ -91,19 +94,21 @@
                         <ul>
                             <li>
                                 <p>Street</p>
-                                <span>: 56/8</span>
+                                <span>:
+                                    <asp:Label runat="server" ID="Label_street"></asp:Label></span>
                             </li>
                             <li>
                                 <p>city</p>
-                                <span>: Los Angeles</span>
+                                <span>: Singapore</span>
                             </li>
                             <li>
                                 <p>country</p>
-                                <span>: United States</span>
+                                <span>: Singapore</span>
                             </li>
                             <li>
                                 <p>postcode</p>
-                                <span>: 36952</span>
+                                <span>:
+                                    <asp:Label runat="server" ID="Label_Zipcode"></asp:Label></span>
                             </li>
                         </ul>
                     </div>
@@ -123,10 +128,15 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                                    <th>x02</th>
-                                    <th><span>$720.00</span></th>
+                                    <asp:Repeater ID="Repeater1" runat="server">
+                                        <ItemTemplate>
+                                            <th colspan="2"><span><asp:Label runat="server" ID="Label_Name" Text='<%#Eval("name") %>'></asp:Label></span></th>
+                                            <th><asp:Label runat="server" ID="Label_Quantity" Text='<%# "x " + string.Format("{0:D2}", Eval("quantity").ToString()) %>'></asp:Label></th>
+                                            <th><span><asp:Label runat="server" ID="Label_TotalPrice" Text='<%# string.Format("${0:00.00}", double.Parse(Eval("price").ToString())) %>'></asp:Label></span></th>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                 </tr>
+                                <!--
                                 <tr>
                                     <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
                                     <th>x02</th>
@@ -137,9 +147,16 @@
                                     <th>x02</th>
                                     <th><span>$720.00</span></th>
                                 </tr>
+                                <tr>
+                                    <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
+                                    <th>x02</th>
+                                    <th><span>$720.00</span></th>
+                                </tr>
+                                -->
                                 <tr>
                                     <th colspan="3">Subtotal</th>
-                                    <th><span>$2160.00</span></th>
+                                    <th><span>
+                                        <asp:Label runat="server" ID="Label_Subtotal"></asp:Label></span></th>
                                 </tr>
                                 <tr>
                                     <th colspan="3">shipping</th>
