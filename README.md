@@ -1,14 +1,23 @@
-Shopping cart & Stripe
+### This is an e-commerce application that sells apparel using ASP.NET Web Forms
 
-TODO:
-	fix checkout form, user must have ToS button checked before proceeding
+#### Features
+- Able to search clothes name
+-  Interactive Carrousel displaying images
+-  Shopping Cart & Stripe checkout
+-  2 type of accounts, User & Admin
 
-	Graph for Admin, "Daily transaction", eg: 
-		Transactions	Date
-			1			4 Dec 21
-			3			5 Dec 21
-			5			6 Dec 21
-			and			so on
+#### Limitations
+- Unable to purchase same clothe but different size/colour - Only 1 type 
 
 
-https://docs.microsoft.com/en-us/samples/browse/?redirectedfrom=MSDN-samples
+----
+
+
+```
+Graph for Admin, "Daily transaction", eg: 
+	Transactions	Date
+		1	4 Dec 21
+		3	5 Dec 21
+		5	6 Dec 21
+		and	so on
+```
