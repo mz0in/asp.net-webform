@@ -64,13 +64,13 @@
                                         </div>
                                         <div class="header-info-right">
                                             <ul>
-                                                <li><a href="login.aspx">My Account</a></li>
+                                                <li><a href="settings.aspx">My Account</a></li>
                                                 <!--
-                                            <li><a href="product_list.html">Wish List</a></li>
-                                            <li><a href="cart.html">Shopping</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            -->
+                                                <li><a href="product_list.html">Wish List</a></li>
+                                                <li><a href="cart.html">Shopping</a></li>
+                                                <li><a href="cart.html">Cart</a></li>
                                                 <li><a href="checkout.aspx">Checkout</a></li>
+                                                -->
                                             </ul>
                                         </div>
                                     </div>

@@ -27,8 +27,6 @@ namespace AWAD_Assignment
              * https://docs.microsoft.com/en-us/previous-versions/aspnet/zdh19h94(v=vs.100)     Basic Security Practices for Web Applications
              * https://docs.microsoft.com/en-us/previous-versions/aspnet/f13d73y6(v=vs.100)     Overview of Web Application Security Threats
              */
-
-            
         }
 
         protected void LinkButton_SignOut_Click(object sender, EventArgs e) {

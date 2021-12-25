@@ -865,6 +865,7 @@
     <Content Include="routes\product_list_women.aspx" />
     <Content Include="routes\register.aspx" />
     <Content Include="routes\search.aspx" />
+    <Content Include="routes\settings.aspx" />
     <Content Include="routes\single_product.aspx" />
     <Content Include="TODO.txt" />
     <Content Include="Web.config" />
@@ -980,6 +981,13 @@
     </Compile>
     <Compile Include="routes\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="routes\settings.aspx.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\settings.aspx.designer.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="routes\single_product.aspx.cs">
       <DependentUpon>single_product.aspx</DependentUpon>

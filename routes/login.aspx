@@ -87,12 +87,12 @@
                                 <div class="col-md-12 form-group p_star">
                                     <!-- <input type="text" class="form-control" id="name" name="name" value="" placeholder="Username"> -->
                                     <asp:TextBox ID="TextBox_Email" TabIndex="1" TextMode="Email" CssClass="form-control" Placeholder="Email Address" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" Text="melvin" runat="server" ForeColor="Red" ControlToValidate="TextBox_Email" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server" ForeColor="Red" ControlToValidate="TextBox_Email" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="col-md-12 form-group p_star">
                                     <!-- <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password"> -->
-                                    <asp:TextBox ID="TextBox_Password" TabIndex="2" TextMode="Password" Text="melvin" CssClass="form-control" Placeholder="Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox_Password" TabIndex="2" TextMode="Password" Text="" CssClass="form-control" Placeholder="Password" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator_Password" runat="server" ForeColor="Red" ControlToValidate="TextBox_Password" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
                                 </div>
 

@@ -17,11 +17,13 @@ namespace AWAD_Assignment {
             }
         }
         protected void LinkButton_SignOut_Click(object sender, EventArgs e) {
-            //Session.Clear();
-            
+            Session.Clear();
+            Session["email"] = null;
+
             Session["CHANGE_MASTERPAGE2"] = "~/BeforeLogin.Master";
             Session["CHANGE_MASTERPAGE"] = null;
-            Response.Redirect(Request.Url.AbsoluteUri);
+            //Response.Redirect(Request.Url.AbsoluteUri);
+            Response.Redirect(ResolveClientUrl("default.aspx"));
              // TODO - Edit => Sign out button
         }
     }

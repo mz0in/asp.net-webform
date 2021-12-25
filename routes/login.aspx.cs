@@ -50,10 +50,9 @@ namespace AWAD_Assignment.routes
                     //Response.Write("<script language=javascript>alert('Login Successful')</script>");
                     //return;
 
-                    // TODO - Login implementation
                     Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                     Session["CHANGE_MASTERPAGE2"] = null;
-                    Response.Redirect(Request.Url.AbsoluteUri); // Remove <-- 
+                    Response.Redirect(ResolveClientUrl("default.aspx"));
                 } else {
                     Label_LoginFailure.Text = "Email Adress or Password is incorrect";
                 }

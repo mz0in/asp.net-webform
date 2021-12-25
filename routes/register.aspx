@@ -81,7 +81,7 @@
                                     <asp:TextBox ID="TextBox_MobileNumber" TextMode="Phone" CssClass="form-control" Placeholder="Mobile Number" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator_MobileNumber" ForeColor="Red" runat="server" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_MobileNumber"></asp:RequiredFieldValidator>
                                     <br />
-                                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator_MobileNumber" ForeColor="Red" ControlToValidate="TextBox_MobileNumber" ValidationExpression="^\d{8}$" ErrorMessage="You don't have words in your mobile number right"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator_MobileNumber" ForeColor="Red" ControlToValidate="TextBox_MobileNumber" ValidationExpression="^\d{8}$" ErrorMessage="Invalid mobile number"></asp:RegularExpressionValidator>
                                 </div>
 
                                 <div class="col-md-12 form-group p_star">

@@ -24,7 +24,7 @@ namespace AWAD_Assignment.routes
 
             using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [accounts] WHERE email = @email", conn)) {
                 //checks if the email that the user has entered exists in the database table
-                cmd.Parameters.AddWithValue("Email", TextBox_Email.Text);
+                cmd.Parameters.AddWithValue("@email", TextBox_Email.Text);
                 exists = (int)cmd.ExecuteScalar() > 0;
             }
 
@@ -38,8 +38,8 @@ namespace AWAD_Assignment.routes
             else {
                 Label_EmailExists.Text = "";
 
-                string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, isAdmin, password, mobile_number) " +
-                    "values (@id, @first, @last, @email, @admin, @password, @mobile)";
+                string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " +
+                    "values (@id, @first, @last, @email, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
 
                 SqlCommand com = new SqlCommand(insertQuery, conn);
 
@@ -50,11 +50,21 @@ namespace AWAD_Assignment.routes
                 com.Parameters.AddWithValue("@admin", false);
                 com.Parameters.AddWithValue("@password", Hash.ComputeHash(TextBox_Password.Text, "SHA512", null));
                 com.Parameters.AddWithValue("@mobile", TextBox_MobileNumber.Text);
+                com.Parameters.AddWithValue("@multi_factor_enabled", false);
+                com.Parameters.AddWithValue("@secret_key", DBNull.Value);
+                com.Parameters.AddWithValue("@address1", DBNull.Value);
+                com.Parameters.AddWithValue("@address2", DBNull.Value);
+                com.Parameters.AddWithValue("@zipcode", DBNull.Value);
 
                 com.ExecuteNonQuery();
 
-                Response.Write("<script>alert('Successfully created account! Welcome! ');</script>");
-                // TODO - login newly created account 
+                Response.Write("<script>alert('Successfully created account, Welcome! ');</script>");
+                
+                // login newly created account
+                Session["email"] = TextBox_Email.Text;
+                Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
+                Session["CHANGE_MASTERPAGE2"] = null;
+                Response.Redirect(ResolveClientUrl("default.aspx"));
             }
 
             conn.Close();
