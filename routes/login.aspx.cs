@@ -47,8 +47,8 @@ namespace AWAD_Assignment.routes
                 bool flag = Hash.VerifyHash(TextBox_Password.Text, "SHA512", password); // verifies password through hash function
 
                 if (flag == true) {
-                    Response.Write("<script language=javascript>alert('Login Successful')</script>");
-                    return;
+                    //Response.Write("<script language=javascript>alert('Login Successful')</script>");
+                    //return;
 
                     // TODO - Login implementation
                     Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";

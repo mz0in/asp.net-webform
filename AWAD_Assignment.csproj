@@ -847,6 +847,7 @@
     <Content Include="assets\webfonts\fa-brands-400.svg" />
     <Content Include="assets\webfonts\fa-regular-400.svg" />
     <Content Include="assets\webfonts\fa-solid-900.svg" />
+    <Content Include="default.aspx" />
     <Content Include="routes\about.aspx" />
     <Content Include="routes\cart.aspx" />
     <Content Include="routes\checkout.aspx" />
@@ -869,11 +870,25 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfterLogin.Master.cs">
+      <DependentUpon>AfterLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLogin.Master.designer.cs">
+      <DependentUpon>AfterLogin.Master</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\Clothes.cs" />
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Code\Hash.cs" />
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="routes\about.aspx.cs">
       <DependentUpon>about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1057,6 +1072,7 @@
     <Content Include="assets\webfonts\fa-solid-900.woff" />
     <Content Include="assets\webfonts\fa-solid-900.woff2" />
     <Content Include="apikeys.json" />
+    <Content Include="AfterLogin.Master" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <None Include="Web.Debug.config">
