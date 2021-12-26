@@ -3,6 +3,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">Product</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .Star {
+            background-image: url(../img/_ratingStars/Star.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .WaitingStar {
+            background-image: url(../img/_ratingStars/WaitingStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .FilledStar {
+            background-image: url(../img/_ratingStars/FilledStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+    </style>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Preloader" runat="server">

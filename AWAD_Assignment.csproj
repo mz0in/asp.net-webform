@@ -865,7 +865,6 @@
     <Content Include="routes\error\408.html" />
     <Content Include="routes\error\500.html" />
     <Content Include="routes\error\error.html" />
-    <Content Include="routes\ExternalLoginResult.aspx" />
     <Content Include="routes\forget_password.aspx" />
     <Content Include="routes\default.aspx" />
     <Content Include="routes\login.aspx" />
@@ -939,13 +938,6 @@
     </Compile>
     <Compile Include="routes\contact.aspx.designer.cs">
       <DependentUpon>contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="routes\ExternalLoginResult.aspx.cs">
-      <DependentUpon>ExternalLoginResult.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="routes\ExternalLoginResult.aspx.designer.cs">
-      <DependentUpon>ExternalLoginResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="routes\forget_password.aspx.cs">
       <DependentUpon>forget_password.aspx</DependentUpon>
