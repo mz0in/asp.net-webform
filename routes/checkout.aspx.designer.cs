@@ -220,12 +220,12 @@ namespace AWAD_Assignment.routes {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_ToS;
 
         /// <summary>
-        /// Button_Payment control.
+        /// LinkButton_Payment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Payment;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_Payment;
     }
 }

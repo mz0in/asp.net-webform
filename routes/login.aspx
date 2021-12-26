@@ -21,14 +21,14 @@
             color: white;
             border-radius:5%;
         }
-        #signinGoogle {
+        .signinGoogle {
             background-color: transparent;
             font-family: 'Poppins', sans-serif;
             font-size: 12px;
             color: black;
             padding:6px;
         }
-        #signinGoogle:hover {
+        .signinGoogle:hover {
             /*border: 1.5px solid;*/
             background-color: #1242c9;
             color: white;
@@ -87,13 +87,15 @@
                                 <div class="col-md-12 form-group p_star">
                                     <!-- <input type="text" class="form-control" id="name" name="name" value="" placeholder="Username"> -->
                                     <asp:TextBox ID="TextBox_Email" TabIndex="1" TextMode="Email" CssClass="form-control" Placeholder="Email Address" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server" ForeColor="Red" ControlToValidate="TextBox_Email" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
+                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server" ForeColor="Red" ControlToValidate="TextBox_Email" ErrorMessage="Required Field"></asp:RequiredFieldValidator>--%>
+                                    <asp:Label runat="server" ID="Label_Email_Validator_Message" ForeColor="Red" Text=""></asp:Label>
                                 </div>
 
                                 <div class="col-md-12 form-group p_star">
                                     <!-- <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password"> -->
                                     <asp:TextBox ID="TextBox_Password" TabIndex="2" TextMode="Password" Text="" CssClass="form-control" Placeholder="Password" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_Password" runat="server" ForeColor="Red" ControlToValidate="TextBox_Password" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
+                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator_Password" runat="server" ForeColor="Red" ControlToValidate="TextBox_Password" ErrorMessage="Required Field"></asp:RequiredFieldValidator>--%>
+                                    <asp:Label runat="server" ID="Label_Password_Validator_Message" ForeColor="Red" Text=""></asp:Label>
                                 </div>
 
                                 <div class="col-md-12 form-group p_star" style="text-align: center;">
@@ -118,10 +120,23 @@
                             <img src="../assets/img/_social_login/fbbutton.png" height="60px" />
                             Sign in with Facebook
                         </a>
-                        <a id="signinGoogle" href="">
+                        <%--<a id="signinGoogle" href="">
                             <img src="../assets/img/_social_login/googlebtn.png" height="60px" />
                             Sign in with Google
-                        </a>
+                        </a>--%>
+                        
+                        
+                        <%--<a id="signinGoogle">
+                            <asp:ImageButton runat="server" ImageUrl="../assets/img/_social_login/googlebtn.png" Height="60px"/>
+                            Sign in with Google
+                        </a>--%>
+
+                        <asp:LinkButton runat="server" CssClass="signinGoogle" Text="Sign in with Google" ID="LinkButton_SignInWithGoogle" OnClick="LinkButton_SignInWithGoogle_Click" >
+                            <asp:Image runat="server" ImageUrl="../assets/img/_social_login/googlebtn.png" Height="60px"/>
+                        </asp:LinkButton>
+
+
+
                     </div>
 
                 </div>

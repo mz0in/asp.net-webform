@@ -11,7 +11,7 @@ using System.Configuration;
 using Salt_Password_Sample;
 
 namespace AWAD_Assignment.routes {
-    public partial class settings : System.Web.UI.Page {
+    public partial class settings : BasePage {
         protected void Page_Load(object sender, EventArgs e) {
 
             // If user is not logged in, redirect to login.aspx

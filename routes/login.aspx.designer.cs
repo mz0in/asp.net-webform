@@ -22,13 +22,13 @@ namespace AWAD_Assignment.routes {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Email;
 
         /// <summary>
-        /// RequiredFieldValidator_Email control.
+        /// Label_Email_Validator_Message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Email;
+        protected global::System.Web.UI.WebControls.Label Label_Email_Validator_Message;
 
         /// <summary>
         /// TextBox_Password control.
@@ -40,13 +40,13 @@ namespace AWAD_Assignment.routes {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Password;
 
         /// <summary>
-        /// RequiredFieldValidator_Password control.
+        /// Label_Password_Validator_Message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Password;
+        protected global::System.Web.UI.WebControls.Label Label_Password_Validator_Message;
 
         /// <summary>
         /// Label_LoginFailure control.
@@ -65,5 +65,14 @@ namespace AWAD_Assignment.routes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Login;
+
+        /// <summary>
+        /// LinkButton_SignInWithGoogle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_SignInWithGoogle;
     }
 }

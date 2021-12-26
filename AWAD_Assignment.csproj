@@ -47,12 +47,17 @@
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Nemiro.OAuth, Version=1.13.0.2828, Culture=neutral, PublicKeyToken=cb06320e362d440b, processorArchitecture=MSIL">
+      <HintPath>packages\Nemiro.OAuth.1.13.0\lib\net47\Nemiro.OAuth.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Stripe.net, Version=39.84.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Stripe.net.39.84.0\lib\net461\Stripe.net.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -61,6 +66,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -849,6 +855,7 @@
     <Content Include="assets\webfonts\fa-solid-900.svg" />
     <Content Include="default.aspx" />
     <Content Include="routes\about.aspx" />
+    <Content Include="routes\callback.aspx" />
     <Content Include="routes\cart.aspx" />
     <Content Include="routes\checkout.aspx" />
     <Content Include="routes\confirmation.aspx" />
@@ -858,6 +865,7 @@
     <Content Include="routes\error\408.html" />
     <Content Include="routes\error\500.html" />
     <Content Include="routes\error\error.html" />
+    <Content Include="routes\ExternalLoginResult.aspx" />
     <Content Include="routes\forget_password.aspx" />
     <Content Include="routes\default.aspx" />
     <Content Include="routes\login.aspx" />
@@ -897,6 +905,13 @@
     <Compile Include="routes\about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
     </Compile>
+    <Compile Include="routes\callback.aspx.cs">
+      <DependentUpon>callback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\callback.aspx.designer.cs">
+      <DependentUpon>callback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="routes\cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -924,6 +939,13 @@
     </Compile>
     <Compile Include="routes\contact.aspx.designer.cs">
       <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="routes\ExternalLoginResult.aspx.cs">
+      <DependentUpon>ExternalLoginResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\ExternalLoginResult.aspx.designer.cs">
+      <DependentUpon>ExternalLoginResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="routes\forget_password.aspx.cs">
       <DependentUpon>forget_password.aspx</DependentUpon>

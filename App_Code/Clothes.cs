@@ -178,4 +178,13 @@ public class Account {
         dr.Dispose();
         return account;
     }
+    public class SecretKeys {
+        public string stripe_api_key { get; set; }
+    }
+}
+
+public class SecretKeys {
+    public string stripe_api_key { get; set; }
+    public string google_public { get; set; }
+    public string google_secret { get; set; }
 }

@@ -9,6 +9,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using Salt_Password_Sample;
+using Nemiro.OAuth;
+using Nemiro.OAuth.Clients;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace AWAD_Assignment.routes
 {
@@ -19,9 +23,14 @@ namespace AWAD_Assignment.routes
         }
         protected void btnSignIn_Click(object sender, EventArgs e) {
 
-            // Creating session cookies
-            Session["email"] = TextBox_Email.Text;
-            //Session["cart"] = new Dictionary<string, Cart>();
+            if (TextBox_Email.Text.Trim().Length == 0 || TextBox_Email.Text == null) {
+                Label_Email_Validator_Message.Text = "Required Field";
+                return;
+            }
+            if (TextBox_Password.Text.Trim().Length == 0 || TextBox_Password.Text == null) {
+                Label_Password_Validator_Message.Text = "Required Field";
+                return;
+            }
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
 
@@ -47,6 +56,9 @@ namespace AWAD_Assignment.routes
                 bool flag = Hash.VerifyHash(TextBox_Password.Text, "SHA512", password); // verifies password through hash function
 
                 if (flag) {
+                    // Set Email session cookies
+                    Session["email"] = TextBox_Email.Text;
+                    // Set Login MasterPage
                     Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                     Session["CHANGE_MASTERPAGE2"] = null;
                     Response.Redirect(ResolveClientUrl("default.aspx"));
@@ -58,6 +70,24 @@ namespace AWAD_Assignment.routes
             }
 
             TextBox_Email.Text = ""; //clears textbox after login
+        }
+
+        protected void LinkButton_SignInWithGoogle_Click(object sender, EventArgs e) {
+            SecretKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
+            using (StreamReader reader = new StreamReader(Server.MapPath("../apikeys.json"))) {
+                string jsonString = reader.ReadToEnd();
+                api_keys = JsonConvert.DeserializeObject<SecretKeys>(jsonString);
+            }
+
+            // https://github.com/alekseynemiro/nemiro.oauth.dll
+            // https://www.codeproject.com/Articles/875991/Users-Authorization-through-OAuth-in-NET-Framework#AspNet
+            OAuthManager.RegisterClient(
+                "google",
+                api_keys.google_public,
+                api_keys.google_secret
+                );
+            string returnUrl = new Uri(Request.Url, "callback.aspx").AbsoluteUri;
+            OAuthWeb.RedirectToAuthorization("google", returnUrl);
         }
     }
 }

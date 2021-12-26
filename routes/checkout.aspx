@@ -268,8 +268,7 @@
                                 <asp:CheckBox runat="server" ID="CheckBox_ToS" Checked="false" Text="I’ve read and accept the terms & conditions*" />
                             </div>
                             <!-- <a class="btn_3" href="#">Proceed to Payment</a> -->
-                            <%--<asp:LinkButton runat="server" CssClass="btn_3" Text="Proceed to Payment" OnClick="LinkButton_Payment_Click" ID="LinkButton_Payment"></asp:LinkButton>--%>
-                            <asp:Button runat="server" CssClass="btn_3" Text="Proceed to Payment" OnClick="Button_Payment_Click" ID="Button_Payment"/>
+                            <asp:LinkButton runat="server" CssClass="btn_3" Text="Proceed to Payment" OnClick="LinkButton_Payment_Click" ID="LinkButton_Payment"></asp:LinkButton>
                         </div>
                     </div>
                 </div>

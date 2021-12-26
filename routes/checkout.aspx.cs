@@ -24,7 +24,6 @@ namespace AWAD_Assignment.routes {
                 // If user is logged in, complete the form for them and hide div to login/register account
                     theReturningCustomerDiv.Visible = false;
                     var account = Account.GetAccount(Session["email"].ToString());
-                    Debug.WriteLine(account.firstname);
                     TextBox_FirstName.Text = account.firstname;
                     TextBox_LastName.Text = account.lastname;
                     TextBox_MobileNumber.Text = account.mobilenumber;
@@ -85,109 +84,22 @@ namespace AWAD_Assignment.routes {
         }
 
         protected void LinkButton_Payment_Click(object sender, EventArgs e) {
-
-            // if user didn't checked ToS box alert them to check
-            if (!CheckBox_ToS.Checked) Response.Write("<script><alert('check Terms of Service box before proceeding')</script>");
-
-            // Saving address & zipcode if not logged in
-            if (Session["email"] == null) Session["shipping"] = new string[2] {TextBox_Address1.Text, TextBox_Zipcode.Text };
-            else {
-                // update existing shipping address with new address
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-                using (SqlCommand command = new SqlCommand("update [accounts] set address1=@addr1, address2=@adrr2, zipcode=@zipcode WHERE email = @email", conn)) {
-                    //checks if the email that the user has entered exists in the database table
-                    command.Parameters.AddWithValue("email", Session["email"].ToString());
-                    command.Parameters.AddWithValue("@addr1", TextBox_Address1.Text);
-                    command.Parameters.AddWithValue("@addr2", TextBox_Address2.Text);
-                    command.Parameters.AddWithValue("zipcode", TextBox_Zipcode.Text);
-                    command.ExecuteNonQuery();
-                }
-            }
-
-            // Stripe payment stuff
-            Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
-
-            APIModelKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
-            using (StreamReader reader = new StreamReader(Server.MapPath("../apikeys.json"))) {
-                string jsonString = reader.ReadToEnd();
-                api_keys = JsonConvert.DeserializeObject<APIModelKeys>(jsonString);
-            }
-            StripeConfiguration.ApiKey = api_keys.stripe_api_key;
-            string domain = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority); // https://stackoverflow.com/questions/26189953/how-to-get-current-domain-name-in-asp-net
-
-
-            var options = new SessionCreateOptions
-            {
-                LineItems = new List<SessionLineItemOptions>
-                { },
-                Mode = "payment",
-                SuccessUrl = domain + "/routes/confirmation.aspx",
-                CancelUrl = domain + "/routes/checkout.aspx",
-                PaymentMethodTypes = new List<string> { "card", },
-                // https://stripe.com/docs/payments/checkout/shipping
-                //ShippingAddressCollection = new SessionShippingAddressCollectionOptions { AllowedCountries = new List<string> { "SG" } }, // I want to use my own shipping address form
-                ShippingOptions = new List<SessionShippingOptionOptions>
-                {
-                    new SessionShippingOptionOptions
-                    {
-                        ShippingRateData = new SessionShippingOptionShippingRateDataOptions
-                        {
-                            DisplayName = "Universal Shipping",
-                            Type = "fixed_amount",
-                            FixedAmount = new SessionShippingOptionShippingRateDataFixedAmountOptions {Amount=5000, Currency = "sgd"},
-                            DeliveryEstimate = new SessionShippingOptionShippingRateDataDeliveryEstimateOptions
-                            {
-                                Minimum = new SessionShippingOptionShippingRateDataDeliveryEstimateMinimumOptions { Unit="day", Value=5 },
-                                Maximum = new SessionShippingOptionShippingRateDataDeliveryEstimateMaximumOptions { Unit="day", Value=7 }
-                            }
-                        }
-                    }
-                },
-            };
-
-                foreach (KeyValuePair<string, Cart> kvp in carts) {
-                    options.LineItems.Add(new SessionLineItemOptions
-                    {
-                        //Name = kvp.Value.item_name,
-                        //Amount = int.Parse(string.Format("{0:00.00}", kvp.Value.item_price).Replace(".", "")),
-                        //Currency = "sgd",
-                        //Quantity = kvp.Value.item_quantity,
-                        
-                         // Above method is deprecated, but I don't know what I am missing below, "Object not set to an instance" Exception 
-                        PriceData = new SessionLineItemPriceDataOptions{
-                            Currency = "sgd",
-                            ProductData = new SessionLineItemPriceDataProductDataOptions {
-                                Name = kvp.Value.item_name,
-                            },                        
-                            //UnitAmountDecimal = decimal.Parse(kvp.Value.item_price.ToString()) * decimal.Parse(kvp.Value.item_quantity.ToString()),
-                            UnitAmountDecimal = int.Parse(string.Format("{0:00.00}", kvp.Value.item_price).Replace(".", "")),  // (decimal?)kvp.Value.item_price,
-                        },
-                        Quantity = kvp.Value.item_quantity,
-                        
-                    });
-                }
-                var service = new SessionService();
-                Session session = service.Create(options);
-
-                // https://stackoverflow.com/questions/9497467/how-to-create-303-response-in-asp-net
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Status = "303 See Other";
-                HttpContext.Current.Response.AddHeader("Location", session.Url);
-                HttpContext.Current.Response.End();
-        }
-
-        protected void Button_Payment_Click(object sender, EventArgs e) {
             if (IsPostBack) {
 
                 // if user didn't checked ToS box alert them to check
-                if (!CheckBox_ToS.Checked) Response.Write("<script>alert('Please check Terms of Service box before proceeding');</script>");
+                if (CheckBox_ToS.Checked == false) {
+                    Response.Write("<script>alert('Please check Terms of Service box before proceeding');</script>");
+                    return;
+                }
+                        
 
                 // Saving address & zipcode if not logged in -- TODO - Fix this below, data from textbox not send over?
                 if (Session["email"] == null || Session["email"].ToString().Trim() == "") Session["shipping"] = new string[2] { TextBox_Address1.Text, TextBox_Zipcode.Text };
                 else {
                     // update existing shipping address with new address
                     SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-                    using (SqlCommand command = new SqlCommand("update [accounts] set address1=@addr1, address2=@adrr2, zipcode=@zipcode WHERE email = @email", conn)) {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("update [accounts] set address1=@addr1, address2=@addr2, zipcode=@zipcode WHERE email = @email", conn)) {
                         //checks if the email that the user has entered exists in the database table
                         command.Parameters.AddWithValue("email", TextBox_Email.Text);
                         command.Parameters.AddWithValue("@addr1", TextBox_Address1.Text);
@@ -195,15 +107,16 @@ namespace AWAD_Assignment.routes {
                         command.Parameters.AddWithValue("zipcode", TextBox_Zipcode.Text);
                         command.ExecuteNonQuery();
                     }
+                    conn.Close();
                 }
 
                 // Stripe payment stuff
                 Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
 
-                APIModelKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
+                SecretKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
                 using (StreamReader reader = new StreamReader(Server.MapPath("../apikeys.json"))) {
                     string jsonString = reader.ReadToEnd();
-                    api_keys = JsonConvert.DeserializeObject<APIModelKeys>(jsonString);
+                    api_keys = JsonConvert.DeserializeObject<SecretKeys>(jsonString);                    
                 }
                 StripeConfiguration.ApiKey = api_keys.stripe_api_key;
                 string domain = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority); // https://stackoverflow.com/questions/26189953/how-to-get-current-domain-name-in-asp-net
@@ -271,7 +184,7 @@ namespace AWAD_Assignment.routes {
                     HttpContext.Current.Response.Status = "303 See Other";
                     HttpContext.Current.Response.AddHeader("Location", session.Url);
                     HttpContext.Current.Response.End();
-                } catch(StripeException) {
+                } catch (StripeException) {
                     Response.Write("<script>alert('Cart is empty. Add some items first');</script>");
                 }
             }
@@ -279,8 +192,5 @@ namespace AWAD_Assignment.routes {
     }
     public class StripeOptions {
         public string option { get; set; }
-    }
-    public class APIModelKeys {
-        public string stripe_api_key { get; set; }
     }
 }
