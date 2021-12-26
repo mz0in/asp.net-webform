@@ -57,8 +57,6 @@ namespace AWAD_Assignment.routes
                 com.Parameters.AddWithValue("@zipcode", DBNull.Value);
 
                 com.ExecuteNonQuery();
-
-                Response.Write("<script>alert('Successfully created account, Welcome! ');</script>");
                 
                 // login newly created account
                 Session["email"] = TextBox_Email.Text;

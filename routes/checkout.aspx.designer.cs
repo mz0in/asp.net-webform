@@ -13,13 +13,13 @@ namespace AWAD_Assignment.routes {
     public partial class checkout {
 
         /// <summary>
-        /// returning_customer_div control.
+        /// theReturningCustomerDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl returning_customer_div;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl theReturningCustomerDiv;
 
         /// <summary>
         /// TextBox_FirstName control.

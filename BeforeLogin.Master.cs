@@ -30,12 +30,6 @@ namespace AWAD_Assignment
         }
 
         protected void LinkButton_SignOut_Click(object sender, EventArgs e) {
-            Session.Clear();
-            /*
-            Session["CHANGE_MASTERPAGE2"] = "~/BeforeLogin.Master";
-            Session["CHANGE_MASTERPAGE"] = null;
-            Response.Redirect(Request.Url.AbsoluteUri);
-            */ // TODO - Edit => Sign out button
         }
     }
 }

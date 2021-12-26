@@ -46,10 +46,7 @@ namespace AWAD_Assignment.routes
                 string password = pwcomm.ExecuteScalar().ToString();
                 bool flag = Hash.VerifyHash(TextBox_Password.Text, "SHA512", password); // verifies password through hash function
 
-                if (flag == true) {
-                    //Response.Write("<script language=javascript>alert('Login Successful')</script>");
-                    //return;
-
+                if (flag) {
                     Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                     Session["CHANGE_MASTERPAGE2"] = null;
                     Response.Redirect(ResolveClientUrl("default.aspx"));

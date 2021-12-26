@@ -19,18 +19,31 @@ namespace AWAD_Assignment.routes {
         protected void Page_Load(object sender, EventArgs e) {
 
             if (!IsPostBack) {
+                // https://www.c-sharpcorner.com/UploadFile/2f59d0/attached-css-change-css-and-style-in-Asp-Net/             
+                if (Session["email"] != null) {
+                // If user is logged in, complete the form for them and hide div to login/register account
+                    theReturningCustomerDiv.Visible = false;
+                    var account = Account.GetAccount(Session["email"].ToString());
+                    Debug.WriteLine(account.firstname);
+                    TextBox_FirstName.Text = account.firstname;
+                    TextBox_LastName.Text = account.lastname;
+                    TextBox_MobileNumber.Text = account.mobilenumber;
+                    TextBox_Email.Text = account.email;
+                    TextBox_Address1.Text = account.adress1;
+                    TextBox_Address2.Text = account.adress2;
+                    TextBox_Zipcode.Text = account.zipcode;
+                    TextBox_Email.ReadOnly = true; // user is not allowed to change email textbox
+                }
+
                 CheckBox_ToS.Checked = true;
 
                 DataSet dataset = GetCartItems();
                 if (dataset == null) return;
-
                 Repeater1.DataSource = dataset;
                 Repeater1.DataBind();
             }
 
-            // https://www.c-sharpcorner.com/UploadFile/2f59d0/attached-css-change-css-and-style-in-Asp-Net/
-            // TODO - Hide "returning_customer" div if user has a session active
-            // returning_customer_div.Style.Add("display", "none"); 
+
         }
         private DataSet GetCartItems() {
             Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
@@ -83,15 +96,13 @@ namespace AWAD_Assignment.routes {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
                 using (SqlCommand command = new SqlCommand("update [accounts] set address1=@addr1, address2=@adrr2, zipcode=@zipcode WHERE email = @email", conn)) {
                     //checks if the email that the user has entered exists in the database table
-                    command.Parameters.AddWithValue("email", TextBox_Email.Text);
+                    command.Parameters.AddWithValue("email", Session["email"].ToString());
                     command.Parameters.AddWithValue("@addr1", TextBox_Address1.Text);
                     command.Parameters.AddWithValue("@addr2", TextBox_Address2.Text);
                     command.Parameters.AddWithValue("zipcode", TextBox_Zipcode.Text);
                     command.ExecuteNonQuery();
                 }
             }
-            string[] shippAddr = (string[])Session["shipping"];
-            Debug.WriteLine(shippAddr[0] + "\t\t" + shippAddr[1]);return;
 
             // Stripe payment stuff
             Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
@@ -260,7 +271,7 @@ namespace AWAD_Assignment.routes {
                     HttpContext.Current.Response.Status = "303 See Other";
                     HttpContext.Current.Response.AddHeader("Location", session.Url);
                     HttpContext.Current.Response.End();
-                } catch(StripeException err) {
+                } catch(StripeException) {
                     Response.Write("<script>alert('Cart is empty. Add some items first');</script>");
                 }
             }

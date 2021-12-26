@@ -22,9 +22,7 @@ namespace AWAD_Assignment {
 
             Session["CHANGE_MASTERPAGE2"] = "~/BeforeLogin.Master";
             Session["CHANGE_MASTERPAGE"] = null;
-            //Response.Redirect(Request.Url.AbsoluteUri);
             Response.Redirect(ResolveClientUrl("default.aspx"));
-             // TODO - Edit => Sign out button
         }
     }
 }
