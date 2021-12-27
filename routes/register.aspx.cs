@@ -38,8 +38,8 @@ namespace AWAD_Assignment.routes
             else {
                 Label_EmailExists.Text = "";
 
-                string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " +
-                    "values (@id, @first, @last, @email, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
+                string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, emailConfirmed, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " +
+                    "values (@id, @first, @last, @email, @emailConfirmed, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
 
                 SqlCommand com = new SqlCommand(insertQuery, conn);
 
@@ -47,6 +47,7 @@ namespace AWAD_Assignment.routes
                 com.Parameters.AddWithValue("@first", TextBox_FirstName.Text);
                 com.Parameters.AddWithValue("@last", TextBox_LastName.Text);
                 com.Parameters.AddWithValue("@email", TextBox_Email.Text);
+                com.Parameters.AddWithValue("@emailConfirmed", false);
                 com.Parameters.AddWithValue("@admin", false);
                 com.Parameters.AddWithValue("@password", Hash.ComputeHash(TextBox_Password.Text, "SHA512", null));
                 com.Parameters.AddWithValue("@mobile", TextBox_MobileNumber.Text);
@@ -58,11 +59,13 @@ namespace AWAD_Assignment.routes
 
                 com.ExecuteNonQuery();
                 
-                // login newly created account
+                // User should verify email first before login  ~~login newly created account~~
+                /*
                 Session["email"] = TextBox_Email.Text;
                 Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                 Session["CHANGE_MASTERPAGE2"] = null;
                 Response.Redirect(ResolveClientUrl("default.aspx"));
+                */
             }
 
             conn.Close();

@@ -40,14 +40,15 @@ namespace AWAD_Assignment.routes {
                 }
                 //else, create new account 
                 else {
-                    string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " +
-                        "values (@id, @first, @last, @email, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
+                    string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, emailConfirmed, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " +
+                        "values (@id, @first, @last, @email, @emailConfirmed, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
 
                     SqlCommand com = new SqlCommand(insertQuery, conn);
                     com.Parameters.AddWithValue("@id", Guid.NewGuid().ToString());
                     com.Parameters.AddWithValue("@first", result.UserInfo.FirstName == null ? "null" : result.UserInfo.FirstName);
                     com.Parameters.AddWithValue("@last", result.UserInfo.LastName == null ? "null" : result.UserInfo.LastName);
                     com.Parameters.AddWithValue("@email", result.UserInfo.Email);
+                    com.Parameters.AddWithValue("@emailConfirmed", false);
                     com.Parameters.AddWithValue("@admin", false);
                     com.Parameters.AddWithValue("@password", Hash.ComputeHash(GenerateRandomPassword(12), "SHA512", null));
                     com.Parameters.AddWithValue("@mobile", result.UserInfo.Phone == null ? "null" : result.UserInfo.Phone);

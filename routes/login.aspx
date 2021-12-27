@@ -9,13 +9,13 @@
          flex-direction: row; 
          justify-content: space-evenly;
         }
-        #signinFB {
+        .signinFB {
             font-family: 'Poppins', sans-serif;
             font-size: 12px;
             color: black;
             padding:6px;
         }
-        #signinFB:hover {
+        .signinFB:hover {
             /*opacity: 0.9;*/
             background-color: #1242c9;
             color: white;
@@ -116,7 +116,7 @@
                     </div>
 
                     <div id="social-container">
-                        <a id="signinFB" href="">
+                        <a class="signinFB" href="">
                             <img src="../assets/img/_social_login/fbbutton.png" height="60px" />
                             Sign in with Facebook
                         </a>

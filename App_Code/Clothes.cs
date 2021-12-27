@@ -106,6 +106,7 @@ public class Account {
     private string _firstname;
     private string _lastname;
     private string _email;
+    private bool _emailConfirmed;
     private bool _isAdmin;
     private string _password;
     private string _mobilenumber;
@@ -120,6 +121,7 @@ public class Account {
     public string firstname { get { return _firstname; } set { _firstname = value; } }
     public string lastname { get { return _lastname; } set { _lastname = value; } }
     public string email { get { return _email; } set { _email = value; } }
+    public bool emailConfirmed { get { return _emailConfirmed; } set { _emailConfirmed = value; } }
     public bool isAdmin { get { return _isAdmin; } }
     public string password { get { return _password; } }
     public string mobilenumber { get { return _mobilenumber; } set { _mobilenumber = value; } }
@@ -130,11 +132,12 @@ public class Account {
     public string zipcode { get { return _zipcode; } set { _zipcode = value; } }
 
     // Methods
-    public Account(string id, string firstname, string lastname, string email, bool isAdmin, string password, string mobilenumber, bool mfaEnabled, string secret_key, string adress1, string adress2, string zipcode) {
+    public Account(string id, string firstname, string lastname, string email, bool emailConfirmed, bool isAdmin, string password, string mobilenumber, bool mfaEnabled, string secret_key, string adress1, string adress2, string zipcode) {
         this._id = id;
         this._firstname = firstname;
         this._lastname = lastname;
         this._email = email;
+        this._emailConfirmed = emailConfirmed;
         this._isAdmin = isAdmin;
         this._password = password;
         this._mobilenumber = mobilenumber;
@@ -161,6 +164,7 @@ public class Account {
                 dr["first_name"].ToString(),
                 dr["last_name"].ToString(),
                 dr["email"].ToString(),
+                bool.Parse(dr["_emailConfirmed"].ToString()),
                 bool.Parse(dr["isAdmin"].ToString()),
                 dr["password"].ToString(),
                 dr["mobile_number"].ToString(),
