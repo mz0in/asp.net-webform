@@ -83,11 +83,25 @@
                                 </div>
 
                                 <div class="col-md-12 form-group">
-                                <asp:TextBox ID="TextBox_Zipcode" TextMode="Phone" TabIndex="7" CssClass="form-control" Placeholder="Postcode/ZIP" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_Zipcode"></asp:RequiredFieldValidator>
-                                <br />
-                                <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator5" ForeColor="Red" ControlToValidate="TextBox_Zipcode" ValidationExpression="^\d{6}$" ErrorMessage="Invalid Zipcode/Postal Code"></asp:RegularExpressionValidator>
+                                    <asp:TextBox ID="TextBox_Zipcode" TextMode="Phone" TabIndex="7" CssClass="form-control" Placeholder="Postcode/ZIP" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_Zipcode"></asp:RequiredFieldValidator>
+                                    <br />
+                                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator5" ForeColor="Red" ControlToValidate="TextBox_Zipcode" ValidationExpression="^\d{6}$" ErrorMessage="Invalid Zipcode/Postal Code"></asp:RegularExpressionValidator>
+                                </div>
+
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="login_part_form">
+                        <div class="login_part_form_iner">
+                            <h3>Security Settings</h3>
+                            <div class="row contact_form">
+                                <div class="col-md-12 form-group p_star">
+                                    <asp:Label runat="server" ID="Label_mfa" Text="Current status: Disabled"></asp:Label>
+                                    <asp:LinkButton runat="server" ID="LinkButton_mfa" OnClick="LinkButton_mfa_Click" Text="Disable / Enable" CssClass="btn_1 btn-danger"></asp:LinkButton>
+                                </div>
 
                             </div>
                         </div>

@@ -2,13 +2,15 @@
 
 #### Features
 - Able to search clothes name
--  Interactive Carrousel displaying images
--  Shopping Cart & Stripe checkout
--  2 type of accounts, User & Admin
+- Interactive Carrousel displaying images
+- Shopping Cart & Stripe checkout
+- 2 type of accounts, User & Admin
+- Able to login with Google
+
 
 #### Limitations
 - Unable to purchase same clothe but different size/colour - Only 1 type 
-
+- There is no pagination
 
 ----
 

@@ -56,12 +56,26 @@ namespace AWAD_Assignment.routes
                 bool flag = Hash.VerifyHash(TextBox_Password.Text, "SHA512", password); // verifies password through hash function
 
                 if (flag) {
-                    // Set Email session cookies
-                    Session["email"] = TextBox_Email.Text;
-                    // Set Login MasterPage
-                    Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
-                    Session["CHANGE_MASTERPAGE2"] = null;
-                    Response.Redirect(ResolveClientUrl("default.aspx"));
+
+                    var user = Account.GetAccount(TextBox_Email.Text);
+                    if (!user.emailConfirmed) {
+                        Label_LoginFailure.Text = "Please verify your account first before logging in";
+                        return;
+                    }
+
+                    // is user admin or not?
+                    if (user.isAdmin) {
+                        Session["email"] = TextBox_Email.Text; // Set Email session cookies
+
+                        // Set Admin masterpage
+                        
+                    } else { 
+                        Session["email"] = TextBox_Email.Text; // Set Email session cookies
+                        // Set user masterpage
+                        Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
+                        Session["CHANGE_MASTERPAGE2"] = null;
+                        Response.Redirect(ResolveClientUrl("default.aspx"));
+                    }
                 } else {
                     Label_LoginFailure.Text = "Email Adress or Password is incorrect";
                 }
@@ -69,7 +83,7 @@ namespace AWAD_Assignment.routes
                 Label_LoginFailure.Text = "Email Adress or Password is incorrect";
             }
 
-            TextBox_Email.Text = ""; //clears textbox after login
+            //TextBox_Email.Text = ""; //clears textbox after login
         }
 
         protected void LinkButton_SignInWithGoogle_Click(object sender, EventArgs e) {

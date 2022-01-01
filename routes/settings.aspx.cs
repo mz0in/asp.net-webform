@@ -61,5 +61,9 @@ namespace AWAD_Assignment.routes {
 
             conn.Close();
         }
+
+        protected void LinkButton_mfa_Click(object sender, EventArgs e) {
+
+        }
     }
 }

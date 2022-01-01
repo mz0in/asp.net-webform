@@ -51,7 +51,7 @@
                             <div class="row contact_form">
                                 <div class="col-md-12 form-group p_star">
                                     <!-- <input type="text" class="form-control" id="name" name="name" value="" placeholder="Username"> -->
-                                    <asp:TextBox ID="TextBox_Email" TabIndex="1" TextMode="Email" CssClass="form-control" Placeholder="Email Address" Text="a@a.a" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox_Email" TabIndex="1" TextMode="Email" CssClass="form-control" Placeholder="Email Address" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server" ForeColor="Red" ControlToValidate="TextBox_Email" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
                                 </div>
 

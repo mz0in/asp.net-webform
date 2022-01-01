@@ -12,7 +12,7 @@ using System.Configuration;
 using Salt_Password_Sample;
 
 namespace AWAD_Assignment.routes {
-    public partial class callback : System.Web.UI.Page {
+    public partial class callback : BasePage {
         protected void Page_Load(object sender, EventArgs e) {
 
             var result = OAuthWeb.VerifyAuthorization();
@@ -40,7 +40,7 @@ namespace AWAD_Assignment.routes {
                 }
                 //else, create new account 
                 else {
-                    string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, emailConfirmed, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " +
+                    string insertQuery = "INSERT INTO accounts (Id, first_name, last_name, email, emailConfirmed, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) " + 
                         "values (@id, @first, @last, @email, @emailConfirmed, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
 
                     SqlCommand com = new SqlCommand(insertQuery, conn);
@@ -50,7 +50,7 @@ namespace AWAD_Assignment.routes {
                     com.Parameters.AddWithValue("@email", result.UserInfo.Email);
                     com.Parameters.AddWithValue("@emailConfirmed", false);
                     com.Parameters.AddWithValue("@admin", false);
-                    com.Parameters.AddWithValue("@password", Hash.ComputeHash(GenerateRandomPassword(12), "SHA512", null));
+                    com.Parameters.AddWithValue("@password", Hash.ComputeHash(Function.GenerateRandomPassword(12), "SHA512", null));
                     com.Parameters.AddWithValue("@mobile", result.UserInfo.Phone == null ? "null" : result.UserInfo.Phone);
                     com.Parameters.AddWithValue("@multi_factor_enabled", false);
                     com.Parameters.AddWithValue("@secret_key", DBNull.Value);

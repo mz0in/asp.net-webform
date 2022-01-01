@@ -157,6 +157,24 @@ namespace AWAD_Assignment.routes {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
 
         /// <summary>
+        /// Label_mfa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_mfa;
+
+        /// <summary>
+        /// LinkButton_mfa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_mfa;
+
+        /// <summary>
         /// Button_UpdateAccount control.
         /// </summary>
         /// <remarks>

@@ -53,10 +53,17 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.25.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>packages\SendGrid.9.25.1\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b2e6337a5d77bfbc, processorArchitecture=MSIL">
+      <HintPath>packages\starkbank-ecdsa.1.3.3\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="Stripe.net, Version=39.84.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Stripe.net.39.84.0\lib\net461\Stripe.net.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -870,10 +877,12 @@
     <Content Include="routes\login.aspx" />
     <Content Include="routes\product_list_men.aspx" />
     <Content Include="routes\product_list_women.aspx" />
+    <Content Include="routes\change_password.aspx" />
     <Content Include="routes\register.aspx" />
     <Content Include="routes\search.aspx" />
     <Content Include="routes\settings.aspx" />
     <Content Include="routes\single_product.aspx" />
+    <Content Include="routes\verify_email.aspx" />
     <Content Include="TODO.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -885,7 +894,7 @@
     <Compile Include="AfterLogin.Master.designer.cs">
       <DependentUpon>AfterLogin.Master</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Clothes.cs" />
+    <Compile Include="App_Code\Classes.cs" />
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -982,6 +991,13 @@
     <Compile Include="routes\product_list_women.aspx.designer.cs">
       <DependentUpon>product_list_women.aspx</DependentUpon>
     </Compile>
+    <Compile Include="routes\change_password.aspx.cs">
+      <DependentUpon>change_password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\change_password.aspx.designer.cs">
+      <DependentUpon>change_password.aspx</DependentUpon>
+    </Compile>
     <Compile Include="routes\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1009,6 +1025,13 @@
     </Compile>
     <Compile Include="routes\single_product.aspx.designer.cs">
       <DependentUpon>single_product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="routes\verify_email.aspx.cs">
+      <DependentUpon>verify_email.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\verify_email.aspx.designer.cs">
+      <DependentUpon>verify_email.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
