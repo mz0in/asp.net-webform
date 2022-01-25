@@ -13,13 +13,13 @@ namespace AWAD_Assignment.routes {
     public partial class single_product {
 
         /// <summary>
-        /// Repeater1 control.
+        /// RepeaterImages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterImages;
 
         /// <summary>
         /// Label_Clothes_name control.
@@ -29,6 +29,15 @@ namespace AWAD_Assignment.routes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_Clothes_name;
+
+        /// <summary>
+        /// Label_AverageReviewStar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_AverageReviewStar;
 
         /// <summary>
         /// Label_Clothes_price control.
@@ -76,6 +85,51 @@ namespace AWAD_Assignment.routes {
         protected global::System.Web.UI.WebControls.Button Button_AddToCart;
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// Rating1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.Rating Rating1;
+
+        /// <summary>
+        /// TextBox_ReviewDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ReviewDescription;
+
+        /// <summary>
+        /// Button_SubmitReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_SubmitReview;
+
+        /// <summary>
+        /// Label_ReviewCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_ReviewCount;
+
+        /// <summary>
         /// Label_Clothes_overview control.
         /// </summary>
         /// <remarks>
@@ -83,5 +137,14 @@ namespace AWAD_Assignment.routes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_Clothes_overview;
+
+        /// <summary>
+        /// RepeaterReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterReview;
     }
 }
