@@ -68,7 +68,10 @@ namespace AWAD_Assignment.routes
                         Session["email"] = TextBox_Email.Text; // Set Email session cookies
 
                         // Set Admin masterpage
-                        
+                        Session["CHANGE_MASTERPAGE"] = "~/AfterLoginAdmin.Master";
+                        Session["CHANGE_MASTERPAGE2"] = null;
+                        Response.Redirect(ResolveClientUrl("default.aspx"));
+
                     } else { 
                         Session["email"] = TextBox_Email.Text; // Set Email session cookies
                         // Set user masterpage

@@ -865,6 +865,7 @@
     <Content Include="assets\webfonts\fa-solid-900.svg" />
     <Content Include="default.aspx" />
     <Content Include="routes\about.aspx" />
+    <Content Include="routes\admin_dashboard.aspx" />
     <Content Include="routes\callback.aspx" />
     <Content Include="routes\cart.aspx" />
     <Content Include="routes\checkout.aspx" />
@@ -897,6 +898,13 @@
     <Compile Include="AfterLogin.Master.designer.cs">
       <DependentUpon>AfterLogin.Master</DependentUpon>
     </Compile>
+    <Compile Include="AfterLoginAdmin.Master.cs">
+      <DependentUpon>AfterLoginAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginAdmin.Master.designer.cs">
+      <DependentUpon>AfterLoginAdmin.Master</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\Classes.cs" />
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -915,6 +923,13 @@
     </Compile>
     <Compile Include="routes\about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="routes\admin_dashboard.aspx.cs">
+      <DependentUpon>admin_dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\admin_dashboard.aspx.designer.cs">
+      <DependentUpon>admin_dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="routes\callback.aspx.cs">
       <DependentUpon>callback.aspx</DependentUpon>
@@ -1121,6 +1136,7 @@
     <Content Include="assets\webfonts\fa-solid-900.woff2" />
     <Content Include="apikeys.json" />
     <Content Include="AfterLogin.Master" />
+    <Content Include="AfterLoginAdmin.Master" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <None Include="Web.Debug.config">
