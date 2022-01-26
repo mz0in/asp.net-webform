@@ -72,7 +72,7 @@
                                 There are advances being made in science and technology
                                 everyday, and a good example of this is the
                             </p>
-                            <a href="register.aspx" class="btn_3">Create an Account</a>
+                            <a href="/register" class="btn_3">Create an Account</a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                                     </div>
                                     <!-- <button type="submit" value="submit" class="btn_3" style="cursor:pointer;">log in</button> -->
                                     <asp:Button CssClass="btn_3" ID="Button_Login" Text="log in" OnClick="btnSignIn_Click" runat="server" />
-                                     <a class="lost_pass" href="forget_password.aspx">forget password?</a> 
+                                     <a class="lost_pass" href="/forgetpassword">forget password?</a> 
                                 </div>
                             </div>
                         </div>

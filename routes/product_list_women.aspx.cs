@@ -42,11 +42,11 @@ namespace AWAD_Assignment.routes
                     LinkButtonCategory5.Text = "Skirts";
                 } else {
                     //redirect if not valid parameter
-                    Response.Redirect(ResolveClientUrl("product_list_women.aspx?q=tops"));
+                    Response.Redirect("ProductsWomen?q=tops");
                 }
             } else {
                 //Return absolute path with params "q"
-                Response.Redirect(ResolveClientUrl("product_list_women.aspx?q=tops"));
+                Response.Redirect("ProductsWomen?q=tops");
             }
         }
         private DataSet GetWomenClothes() {

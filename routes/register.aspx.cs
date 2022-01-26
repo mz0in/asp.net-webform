@@ -69,12 +69,6 @@ namespace AWAD_Assignment.routes
                 com.ExecuteNonQuery();
 
                 // User should verify email first before login  ~~login newly created account~~
-                /*
-                Session["email"] = TextBox_Email.Text;
-                Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
-                Session["CHANGE_MASTERPAGE2"] = null;
-                Response.Redirect(ResolveClientUrl("default.aspx"));
-                */
                 Label_EmailExists.Text = "An email has been sent to your email address to verify your account";
             }
 
@@ -90,7 +84,7 @@ namespace AWAD_Assignment.routes
         private void SendEmail(string email, string name = "Customer") {
 
             SecretKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
-            using (StreamReader reader = new StreamReader(Server.MapPath("../apikeys.json"))) {
+            using (StreamReader reader = new StreamReader(Server.MapPath("./apikeys.json"))) {
                 string jsonString = reader.ReadToEnd();
                 api_keys = JsonConvert.DeserializeObject<SecretKeys>(jsonString);
             }

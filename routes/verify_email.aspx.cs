@@ -18,12 +18,12 @@ namespace AWAD_Assignment.routes {
                 decryptedToken = Function.DecryptEmailToken(Request.QueryString["token"].ToString());
             } catch (NullReferenceException) {
                 // redirect to 404 if no token arg
-                Response.Redirect("/routes/error/404.html");
+                Response.Redirect("404");
             }
 
             // Check if token has expired, redirect 404 if true
             if (Function.HasEmailTokenExpired(decryptedToken)) {
-                Response.Redirect(ResolveClientUrl("/error/404.html"));
+                Response.Redirect("404");
             }
 
             // Check if Decrypted Token Email exists in DB
@@ -47,7 +47,7 @@ namespace AWAD_Assignment.routes {
             }
             else {
                 // Invalid token, redirect to 404
-                Response.Redirect(ResolveClientUrl("/error/404.html"));
+                Response.Redirect("404");
             }
             conn.Close();
         }

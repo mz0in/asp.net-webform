@@ -15,7 +15,7 @@ namespace AWAD_Assignment.routes {
         protected void Page_Load(object sender, EventArgs e) {
 
             // If user is not logged in, redirect to login.aspx
-            if (Session["email"] == null) Response.Redirect(ResolveClientUrl("login.aspx"));
+            if (Session["email"] == null) Response.Redirect("login");
 
             if (!IsPostBack) {
                 var account = Account.GetAccount(Session["email"].ToString());

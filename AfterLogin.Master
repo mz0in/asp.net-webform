@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="header-info-right">
                                             <ul>
-                                                <li><a href="settings.aspx">My Account</a></li>
+                                                <li><a href="settings">My Account</a></li>
                                                 <!--
                                                 <li><a href="product_list.html">Wish List</a></li>
                                                 <li><a href="cart.html">Shopping</a></li>
@@ -83,7 +83,7 @@
                                     <!-- Logo -->
                                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
                                         <div class="logo">
-                                            <a href="default.aspx">
+                                            <a href="/home">
                                                 <img src="../assets/img/logo/logo.png" alt=""></a>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                         <div class="main-menu f-right d-none d-lg-block">
                                             <nav>
                                                 <ul id="navigation">
-                                                    <li><a href="default.aspx">Home</a></li>
+                                                    <li><a href="/home">Home</a></li>
                                                     <!--
                                             <li class="hot"><a href="#">Latest</a>
                                                 <ul class="submenu">
@@ -110,8 +110,8 @@
                                                     <li>
                                                         <a href="">Women</a>
                                                         <ul class="submenu">
-                                                            <li><a href="product_list_women.aspx?q=tops">Tops</a></li>
-                                                            <li><a href="product_list_women.aspx?q=bottoms">Bottoms</a></li>
+                                                            <li><a href="/productsWomen?q=tops">Tops</a></li>
+                                                            <li><a href="/productsWomen?q=bottoms">Bottoms</a></li>
                                                             <li><a href="">Innerwear?</a></li>
                                                             <li><a href="">Accessories?</a></li>
                                                         </ul>
@@ -119,13 +119,13 @@
                                                     <li>
                                                         <a href="">Men</a>
                                                         <ul class="submenu">
-                                                            <li><a href="product_list_men.aspx?q=tops">Tops</a></li>
-                                                            <li><a href="product_list_men.aspx?q=bottoms">Bottoms</a></li>
+                                                            <li><a href="/productsMen?q=tops">Tops</a></li>
+                                                            <li><a href="/productsMen?q=bottoms">Bottoms</a></li>
                                                             <li><a href="">Innerwear?</a></li>
                                                             <li><a href="">Accessories?</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="about.aspx">About</a></li>
+                                                    <li><a href="/about">About</a></li>
                                                     <li><a href="#">Pages</a>
                                                         <ul class="submenu">
                                                             <li><a href="login.html">Login</a></li>
@@ -138,7 +138,7 @@
                                                             <li><a href="Catagori.html">|Catagori|</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="contact.aspx">Contact</a></li>
+                                                    <li><a href="/contact">Contact</a></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -164,7 +164,7 @@
                                     </li> -->
                                             <li>
                                                 <div class="shopping-card">
-                                                    <a href="cart.aspx"><i class="fas fa-shopping-cart"></i></a>
+                                                    <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
                                                 </div>
                                             </li>
                                             <li class="d-none d-lg-block"><asp:LinkButton ID="LinkButton_SignOut" runat="server" CssClass="btn header-btn" Text="Sign Out" OnClick="LinkButton_SignOut_Click"></asp:LinkButton></li>

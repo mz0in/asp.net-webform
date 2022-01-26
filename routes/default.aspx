@@ -92,7 +92,7 @@
                                 <img src="../assets/img/categori/cat1.jpg" alt="">
                                 <div class="category-caption">
                                     <h2>Women`s</h2>
-                                    <span class="best"><a href="product_list_women.aspx?q=tops">Best New Deals</a></span>
+                                    <span class="best"><a href="/productsWomen?q=tops">Best New Deals</a></span>
                                     <span class="collection">New Collection</span>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <img src="../assets/img/categori/cat3.jpg" alt="">
                                 <div class="category-caption">
                                     <h2>Man`s Cloth</h2>
-                                    <span class="best"><a href="product_list_men.aspx?q=tops">Best New Deals</a></span>
+                                    <span class="best"><a href="/productsMen?q=tops">Best New Deals</a></span>
                                     <span class="collection">New Collection</span>
                                 </div>
                             </div>

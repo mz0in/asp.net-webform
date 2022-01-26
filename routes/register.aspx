@@ -42,7 +42,7 @@
                                 There are advances being made in science and technology
                                 everyday, and a good example of this, is this website
                             </p>
-                            <a href="login.aspx" class="btn_3">Login</a>
+                            <a href="/login" class="btn_3">Login</a>
                         </div>
                     </div>
                 </div>

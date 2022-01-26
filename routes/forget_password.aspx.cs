@@ -53,7 +53,7 @@ namespace AWAD_Assignment.routes {
         private void SendEmail(string email, string name="Customer") {
 
             SecretKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
-            using (StreamReader reader = new StreamReader(Server.MapPath("../apikeys.json"))) {
+            using (StreamReader reader = new StreamReader(Server.MapPath("./apikeys.json"))) {
                 string jsonString = reader.ReadToEnd();
                 api_keys = JsonConvert.DeserializeObject<SecretKeys>(jsonString);
             }

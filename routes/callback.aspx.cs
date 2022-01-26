@@ -36,7 +36,7 @@ namespace AWAD_Assignment.routes {
                     // Set Login MasterPage
                     Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                     Session["CHANGE_MASTERPAGE2"] = null;
-                    Response.Redirect(ResolveClientUrl("default.aspx"));
+                    Response.Redirect("home");
                 }
                 //else, create new account 
                 else {
@@ -64,7 +64,7 @@ namespace AWAD_Assignment.routes {
                     Session["email"] = result.UserInfo.Email;
                     Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                     Session["CHANGE_MASTERPAGE2"] = null;
-                    Response.Redirect(ResolveClientUrl("default.aspx"));
+                    Response.Redirect("home");
                 }
                 conn.Close();
             }

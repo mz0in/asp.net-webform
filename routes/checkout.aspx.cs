@@ -106,6 +106,8 @@ namespace AWAD_Assignment.routes {
                         command.Parameters.AddWithValue("@addr2", TextBox_Address2.Text);
                         command.Parameters.AddWithValue("zipcode", TextBox_Zipcode.Text);
                         command.ExecuteNonQuery();
+                        // Create session for confirmation page
+                        Session["shipping"] = new string[2] { TextBox_Address1.Text, TextBox_Zipcode.Text };
                     }
                     conn.Close();
                 }
@@ -114,7 +116,7 @@ namespace AWAD_Assignment.routes {
                 Dictionary<string, Cart> carts = (Dictionary<string, Cart>)Session["cart"];
 
                 SecretKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
-                using (StreamReader reader = new StreamReader(Server.MapPath("../apikeys.json"))) {
+                using (StreamReader reader = new StreamReader(Server.MapPath("./apikeys.json"))) {
                     string jsonString = reader.ReadToEnd();
                     api_keys = JsonConvert.DeserializeObject<SecretKeys>(jsonString);                    
                 }
@@ -127,8 +129,8 @@ namespace AWAD_Assignment.routes {
                     LineItems = new List<SessionLineItemOptions>
                     { },
                     Mode = "payment",
-                    SuccessUrl = domain + "/routes/confirmation.aspx",
-                    CancelUrl = domain + "/routes/checkout.aspx",
+                    SuccessUrl = domain + "/confirmation",
+                    CancelUrl = domain + "/checkout",
                     PaymentMethodTypes = new List<string> { "card", },
                     // https://stripe.com/docs/payments/checkout/shipping
                     //ShippingAddressCollection = new SessionShippingAddressCollectionOptions { AllowedCountries = new List<string> { "SG" } }, // I want to use my own shipping address form
