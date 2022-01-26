@@ -19,23 +19,33 @@ namespace AWAD_Assignment.routes {
         protected void GetAllClothes() {
             DataTable dt = new DataTable();
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
-                connection.Open();
-                SqlDataAdapter sql = new SqlDataAdapter("select * from Clothes", connection);
-                sql.Fill(dt);
-            }
-            if (dt.Rows.Count > 0) {
-                GridView_ProductTable.DataSource = dt;
-                GridView_ProductTable.DataBind();
-            } else {
-                dt.Rows.Add(dt.NewRow());
-                GridView_ProductTable.DataSource = dt;
-                GridView_ProductTable.DataBind();
-                GridView_ProductTable.Rows[0].Cells.Clear();
-                GridView_ProductTable.Rows[0].Cells.Add(new TableCell());
-                GridView_ProductTable.Rows[0].Cells[0].ColumnSpan = dt.Columns.Count;
-                GridView_ProductTable.Rows[0].Cells[0].Text = "No Clothes in Database";
-                GridView_ProductTable.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
-                GridView_ProductTable.Rows[0].Cells[0].VerticalAlign = VerticalAlign.Middle;
+                using (SqlCommand command = new SqlCommand("Product_CRUD", connection)) {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@ACTION", "SELECT");
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataAdapter sql = new SqlDataAdapter()) {
+                        sql.SelectCommand = command;
+
+                        //SqlDataAdapter sql = new SqlDataAdapter(, connection);
+                        sql.Fill(dt);
+                    }
+                    if (dt.Rows.Count > 0) {
+                        GridView_ProductTable.DataSource = dt;
+                        GridView_ProductTable.DataBind();
+                        GridView_ProductTable.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    } else {
+                        dt.Rows.Add(dt.NewRow());
+                        GridView_ProductTable.DataSource = dt;
+                        GridView_ProductTable.DataBind();
+                        GridView_ProductTable.Rows[0].Cells.Clear();
+                        GridView_ProductTable.Rows[0].Cells.Add(new TableCell());
+                        GridView_ProductTable.Rows[0].Cells[0].ColumnSpan = dt.Columns.Count;
+                        GridView_ProductTable.Rows[0].Cells[0].Text = "No Clothes in Database";
+                        GridView_ProductTable.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
+                        GridView_ProductTable.Rows[0].Cells[0].VerticalAlign = VerticalAlign.Middle;
+                    }
+                }
             }
         }
 
@@ -59,8 +69,8 @@ namespace AWAD_Assignment.routes {
                         GetAllClothes();
                     }
                 }
-            } catch (SqlException err) {
-
+            } catch (SqlException) {
+            } catch (FormatException) {
             }
         }
 
@@ -77,37 +87,42 @@ namespace AWAD_Assignment.routes {
         protected void GridView_ProductTable_RowUpdating(object sender, GridViewUpdateEventArgs e) {
             try {
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
-                    connection.Open();
-                    string query = "UPDATE Clothes SET name=@name, quantity=@quantity, price=@price, overview=@overview, gender=@gender, category_id=@category_id, link=@link WHERE id=@id";
-                    SqlCommand sql = new SqlCommand(query, connection);
-                    sql.Parameters.AddWithValue("@id", GridView_ProductTable.DataKeys[e.RowIndex].Value.ToString());
-                    sql.Parameters.AddWithValue("@name", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_name") as TextBox).Text.Trim());
-                    sql.Parameters.AddWithValue("@quantity", Convert.ToInt32((GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_quantity") as TextBox).Text.Trim()));
-                    sql.Parameters.AddWithValue("@price", Convert.ToDouble((GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_price") as TextBox).Text.Trim()));
-                    sql.Parameters.AddWithValue("@overview", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_Overview") as TextBox).Text.Trim());
-                    sql.Parameters.AddWithValue("@gender", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_gender") as TextBox).Text.Trim());
-                    sql.Parameters.AddWithValue("@category_id", Convert.ToInt32((GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_categoryID") as TextBox).Text.Trim()));
-                    sql.Parameters.AddWithValue("@link", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_link") as TextBox).Text.Trim());
-                    //sql.Parameters.AddWithValue("@", );
-                    sql.ExecuteNonQuery();
-                    GridView_ProductTable.EditIndex = -1;
-                    GetAllClothes();
-
+                    using (SqlCommand sql = new SqlCommand("Product_CRUD", connection)) {
+                        connection.Open();
+                        sql.Parameters.AddWithValue("@ACTION", "UPDATE");
+                        sql.CommandType = CommandType.StoredProcedure;
+                        sql.Parameters.AddWithValue("@id", GridView_ProductTable.DataKeys[e.RowIndex].Value.ToString());
+                        sql.Parameters.AddWithValue("@name", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_name") as TextBox).Text.Trim());
+                        sql.Parameters.AddWithValue("@quantity", Convert.ToInt32((GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_quantity") as TextBox).Text.Trim()));
+                        sql.Parameters.AddWithValue("@price", Convert.ToDouble((GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_price") as TextBox).Text.Trim()));
+                        sql.Parameters.AddWithValue("@overview", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_Overview") as TextBox).Text.Trim());
+                        sql.Parameters.AddWithValue("@gender", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_gender") as TextBox).Text.Trim());
+                        sql.Parameters.AddWithValue("@category_id", Convert.ToInt32((GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_categoryID") as TextBox).Text.Trim()));
+                        sql.Parameters.AddWithValue("@link", (GridView_ProductTable.Rows[e.RowIndex].FindControl("TextBox_link") as TextBox).Text.Trim());
+                        //sql.Parameters.AddWithValue("@", );
+                        sql.ExecuteNonQuery();
+                        GridView_ProductTable.EditIndex = -1;
+                        GetAllClothes();
+                    }                
                 }
-            } catch (SqlException err) {}
+            } catch (SqlException) {
+            } catch (FormatException) { 
+            }
         }
 
         protected void GridView_ProductTable_RowDeleting(object sender, GridViewDeleteEventArgs e) {
             try {
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
-                    connection.Open();
-                    string query = "DELETE Clothes WHERE id=@id";
-                    SqlCommand sql = new SqlCommand(query, connection);
-                    sql.Parameters.AddWithValue("@id", GridView_ProductTable.DataKeys[e.RowIndex].Value.ToString());
-                    sql.ExecuteNonQuery();
-                    GetAllClothes();
+                    using (SqlCommand sql = new SqlCommand("Product_CRUD", connection)) {
+                        connection.Open();
+                        sql.Parameters.AddWithValue("@ACTION", "DELETE");
+                        sql.CommandType = CommandType.StoredProcedure;
+                        sql.Parameters.AddWithValue("@id", GridView_ProductTable.DataKeys[e.RowIndex].Value.ToString());
+                        sql.ExecuteNonQuery();
+                        GetAllClothes();
+                    }
                 }
-            } catch (SqlException err) { }
+            } catch (SqlException) { }
         }
     }
 }

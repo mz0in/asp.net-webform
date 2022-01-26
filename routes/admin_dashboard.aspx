@@ -3,6 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">Dashboard</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .categorycontainer{
+            display:flex;
+            justify-content:space-between;
+            /*align-content:flex-end*/
+        }
+        .categories{
+            padding:2rem;
+            border:2px dashed red;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Preloader" runat="server">
@@ -40,35 +51,31 @@
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="body" runat="server">
-    <%--<asp:GridView runat="server" ID="ClothesTable"
-        AutoGenerateColumns="false" ShowFooter="true" GridLines="Vertical" CellPadding="4" ItemType="Clothes" SelectMethod="GetAllClothes" CssClass="table table-borderless">
-        <Columns>
-            <asp:BoundField DataField="ProductID" HeaderText="ID" SortExpression="ProductID" />
-            <asp:BoundField DataField="Product.ProductName" HeaderText="Name" />
-            <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)" DataFormatString="{0:c}" />
-            <asp:TemplateField HeaderText="Quantity">
-                <ItemTemplate>
-                    <asp:TextBox ID="PurchaseQuantity" Width="40" runat="server" Text="<%#: Item.Quantity %>"></asp:TextBox>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Item Total">
-                <ItemTemplate>
-                    <%#: String.Format("{0:c}", ((Convert.ToDouble(Item.Quantity)) *  Convert.ToDouble(Item.Product.UnitPrice)))%>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Remove Item">
-                <ItemTemplate>
-                    <asp:CheckBox ID="Remove" runat="server"></asp:CheckBox>
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>--%>
+    <br />
+    <div class="categorycontainer">
+        <span class="categories">1	Chino</span>
+        <span class="categories">2	Jeans</span>
+        <span class="categories">3	Pants</span>
+        <span class="categories">4	Shorts</span>
+        <span class="categories">5	Casual Shirts</span>
+        <span class="categories">6	Polo Shirts</span>
+        <span class="categories">7	T-Shirts</span>
+        <span class="categories">8	UT(Graphic T-Shirts)</span>
+        <span class="categories">9	Legging Pants</span>
+        <span class="categories">10	Skirts</span>
+        <span class="categories">11	Shirts & Blouses</span>
+        <span class="categories">12	Sweaters</span>
+        <span class="categories">13	Sweats</span>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
 
 
-
-    <asp:GridView runat="server" ID="GridView_ProductTable" AutoGenerateColumns="false" DataKeyNames="Id" ShowHeader="true" ShowHeaderWhenEmpty="true" 
+    <asp:GridView runat="server" ID="GridView_ProductTable" CssClass="table table-bordered" AutoGenerateColumns="false" DataKeyNames="Id" ShowHeader="true" ShowHeaderWhenEmpty="true"
         OnRowCommand="GridView_ProductTable_RowCommand" OnRowEditing="GridView_ProductTable_RowEditing" OnRowCancelingEdit="GridView_ProductTable_RowCancelingEdit"
-        OnRowUpdating="GridView_ProductTable_RowUpdating" OnRowDeleting="GridView_ProductTable_RowDeleting">
+        OnRowUpdating="GridView_ProductTable_RowUpdating" OnRowDeleting="GridView_ProductTable_RowDeleting" ClientIDMode="Static">
         <Columns>
             <%--<asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
@@ -80,7 +87,7 @@
             </asp:TemplateField>--%>
             <asp:TemplateField HeaderText="Name">
                 <HeaderTemplate>
-                    <asp:label runat="server" Text="Name"></asp:label>
+                    <asp:Label runat="server" Text="Name"></asp:Label>
                     <asp:TextBox runat="server" ID="Add_Name"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
@@ -92,31 +99,31 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Quantity">
                 <HeaderTemplate>
-                     <asp:label runat="server" Text="Quantity"></asp:label>
-                    <asp:TextBox runat="server" ID="Add_Quantity"></asp:TextBox>
+                    <asp:Label runat="server" Text="Quantity" Width="100px"></asp:Label>
+                    <asp:TextBox runat="server" ID="Add_Quantity" Width="100px"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("quantity") %>'></asp:Label>
+                    <asp:Label runat="server" Text='<%# Eval("quantity") %>' Width="100px"></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox runat="server" ID="TextBox_quantity" Text='<%# Eval("quantity") %>'></asp:TextBox>
+                    <asp:TextBox runat="server" ID="TextBox_quantity" Text='<%# Eval("quantity") %>' Width="100px"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Price">
                 <HeaderTemplate>
-                     <asp:label runat="server" Text="Price"></asp:label>
-                    <asp:TextBox runat="server" ID="Add_Price"></asp:TextBox>
+                    <asp:Label runat="server" Text="Price" Width="100px"></asp:Label>
+                    <asp:TextBox runat="server" ID="Add_Price" Width="100px"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("price") %>'></asp:Label>
+                    <asp:Label runat="server" Text='<%# string.Format("${0:00.00}", double.Parse(Eval("price").ToString()))%>' Width="100px"></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox runat="server" ID="TextBox_price" Text='<%# Eval("price") %>'></asp:TextBox>
+                    <asp:TextBox runat="server" ID="TextBox_price" Text='<%# Eval("price") %>' Width="100px"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Overview">
                 <HeaderTemplate>
-                     <asp:label runat="server" Text="Overview"></asp:label>
+                    <asp:Label runat="server" Text="Overview"></asp:Label>
                     <br />
                     <asp:TextBox runat="server" TextMode="MultiLine" Width="" ID="Add_Overview"></asp:TextBox>
                     <%--<textarea runat="server" style="width:100%" id="Add_Overview"></textarea>--%>
@@ -131,31 +138,31 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Gender">
                 <HeaderTemplate>
-                     <asp:label runat="server" Text="Gender"></asp:label>
-                    <asp:TextBox runat="server" ID="Add_Gender" MaxLength="1"></asp:TextBox>
+                    <asp:Label runat="server" Text="Gender" Width="100px"></asp:Label>
+                    <asp:TextBox runat="server" ID="Add_Gender" MaxLength="1" Width="100px"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("gender") %>'></asp:Label>
+                    <asp:Label runat="server" Text='<%# Eval("gender") %>' Width="100px"></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox runat="server" ID="TextBox_gender" Text='<%# Eval("gender") %>'></asp:TextBox>
+                    <asp:TextBox runat="server" ID="TextBox_gender" Text='<%# Eval("gender") %>' Width="100px"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Category ID">
                 <HeaderTemplate>
-                     <asp:label runat="server" Text="Category ID"></asp:label>
-                    <asp:TextBox runat="server" ID="Add_CategoryID"></asp:TextBox>
+                    <asp:Label runat="server" Text="Category ID" Width="100px"></asp:Label>
+                    <asp:TextBox runat="server" ID="Add_CategoryID" Width="100px"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("category_id") %>'></asp:Label>
+                    <asp:Label runat="server" Text='<%# Eval("category_id") %>' Width="100px"></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox runat="server" ID="TextBox_categoryID" Text='<%# Eval("category_id") %>'></asp:TextBox>
+                    <asp:TextBox runat="server" ID="TextBox_categoryID" Text='<%# Eval("category_id") %>' Width="100px"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Link">
                 <HeaderTemplate>
-                     <asp:label runat="server" Text="Link"></asp:label>
+                    <asp:Label runat="server" Text="Link"></asp:Label>
                     <asp:TextBox runat="server" ID="Add_Link"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
@@ -182,4 +189,7 @@
         </Columns>
     </asp:GridView>
 
+    
+
+     
 </asp:Content>

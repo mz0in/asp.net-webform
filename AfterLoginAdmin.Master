@@ -310,6 +310,17 @@
             <!-- Jquery Plugins, main Jquery -->
             <script src=".././assets/js/plugins.js"></script>
             <script src=".././assets/js/main.js"></script>
+
+
+            <!-- Jquery Data tables -->
+            <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
+            <script>
+                $(document).ready(function () {
+                    $('#GridView_ProductTable').DataTable({ "ordering": false }); // https://www.datatables.net/reference/option/
+                });
+            </script>
         </div>
     </form>
 </body>
