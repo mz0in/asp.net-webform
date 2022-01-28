@@ -14,12 +14,33 @@ using SendGrid.Helpers.Mail;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using System.Net;
+using System.Diagnostics;
 
 namespace AWAD_Assignment.routes
 {
     public partial class register : BasePage {
         protected void Page_Load(object sender, EventArgs e) {
-            if (IsPostBack) RegisterAccount();
+            //if (IsPostBack) RegisterAccount();
+            //WebClient webClient = new WebClient();
+            //string ipaddress = webClient.DownloadString("https://api.ipify.org");
+
+            //string url = $"https://geo.ipify.org/api/v1?apiKey=at_BzwDuUiZYloRA4ESnfNQCQx1hkRuJ&ipAddress={ipaddress}";
+            //string resultData = string.Empty;
+
+            //HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+
+            //using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
+            //using (Stream stream = response.GetResponseStream())
+            //using (StreamReader reader = new StreamReader(stream)) {
+            //    resultData = reader.ReadToEnd();
+            //}
+
+            //Console.WriteLine(resultData);
+            //Dictionary<dynamic, dynamic> values = JsonConvert.DeserializeObject<Dictionary<dynamic, dynamic>>(resultData);
+            //string loc = values["location"]["country"].ToString();
+            //Debug.WriteLine(loc);
+
         }
         protected void btnRegister_Click(object sender, EventArgs e) {
             RegisterAccount();
@@ -70,6 +91,39 @@ namespace AWAD_Assignment.routes
 
                 // User should verify email first before login  ~~login newly created account~~
                 Label_EmailExists.Text = "An email has been sent to your email address to verify your account";
+
+                SecretKeys api_keys = null; // https://www.delftstack.com/howto/csharp/read-json-file-in-csharp/
+                using (StreamReader reader = new StreamReader(Server.MapPath("./apikeys.json"))) {
+                    string jsonString = reader.ReadToEnd();
+                    api_keys = JsonConvert.DeserializeObject<SecretKeys>(jsonString);
+                }
+
+                // Get user geo location
+                WebClient webClient = new WebClient();
+                string ipaddress = webClient.DownloadString("https://api.ipify.org");
+                string url = $"https://geo.ipify.org/api/v1?apiKey={api_keys.ipify}&ipAddress={ipaddress}";
+                string resultData = string.Empty;
+
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+
+                using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream)) {
+                    resultData = reader.ReadToEnd();
+                }
+                Dictionary<dynamic, dynamic> ipify = JsonConvert.DeserializeObject<Dictionary<dynamic, dynamic>>(resultData);
+                string countryISO = ipify["location"]["country"];
+                // Save Country to database
+                com.CommandText = $"SELECT COUNT(*) FROM Accounts WHERE Email = '{countryISO}'";
+                int countryexists = Convert.ToInt32(com.ExecuteScalar().ToString());
+                // If country exists update count else create new row
+                if (countryexists == 1) {
+                    com.CommandText = $"update Countries set count=count-1 where country='{countryISO}'";
+                    com.ExecuteNonQuery();
+                } else {
+                    com.CommandText = $"INSERT INTO countries (Id, country, count) values ('{Guid.NewGuid().ToString()}', '{countryISO}', 1)";
+                    com.ExecuteNonQuery();
+                }
             }
 
             conn.Close();

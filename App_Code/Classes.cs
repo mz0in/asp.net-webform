@@ -197,6 +197,7 @@ public class SecretKeys {
     public string google_secret { get; set; }
     public string sendgrid_api_key { get; set; }
     public string sendgrid_email { get; set; }
+    public string ipify { get; set; }
 }
 public class ForgetPasswordTemplateData {
     [JsonProperty("resetlink")]

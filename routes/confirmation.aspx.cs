@@ -6,6 +6,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.Diagnostics;
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace AWAD_Assignment.routes
 {
     public partial class confirmation : BasePage {
@@ -22,7 +26,7 @@ namespace AWAD_Assignment.routes
                 Label_street.Text = shippAddr[0];
                 Label_Zipcode.Text = shippAddr[1];
             } catch (NullReferenceException) {
-                Response.Redirect("../home");
+                Response.Redirect("home");
             }
 
             DataSet dataset = GetCartItems();
@@ -69,7 +73,40 @@ namespace AWAD_Assignment.routes
 
             //Label_total.Text = string.Format("${0:00.00}", (subtotal + (subtotal / 10)));
             Label_total.Text = string.Format("SGD ${0:00.00}", subtotal + 50);
-            return ds;
+
+            // Add to Sales Table in database
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
+                conn.Open();
+                string checkuser = "SELECT COUNT(*) FROM Sales WHERE paymentdate = @today";
+                SqlCommand command = new SqlCommand(checkuser, conn);
+                command.Parameters.AddWithValue("@today", DateTime.Now.Date);
+
+                int temp = Convert.ToInt32(command.ExecuteScalar().ToString());
+                if (temp == 1) {
+                    // update data
+                    command.CommandText = $"update sales set amount=amount+{subtotal+50} where paymentdate=@today";
+                    command.ExecuteNonQuery();
+                } else {
+                    // create new record
+                    command.CommandText = $"insert into sales (id, paymentdate, amount) values ('{Guid.NewGuid().ToString()}', @today, {subtotal + 50})";
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Add one for categories Table in database
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
+                conn.Open();
+                foreach (KeyValuePair<string, Cart> kvp in carts) {
+
+                    string query = "update Category set count=1 where id = " +
+                        "(Select Category.Id from Clothes inner join Category on Clothes.category_id = Category.Id " +
+                        $"where Clothes.Id = '{kvp.Value.clothes_id}')";
+
+                    SqlCommand command = new SqlCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+                return ds;
+            }
         }
     }
 }
