@@ -17,35 +17,7 @@ namespace AWAD_Assignment.routes
         {
             if (Request.QueryString["q"] != "" && Request.QueryString["q"] != null) {
                 string search_input = Server.HtmlDecode(Request.QueryString["q"]);
-                /*
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
-                    SqlCommand command = new SqlCommand("select count(*) from Clothes where name like %@search% OR overview like %@search%", conn);
-                    command.Parameters.AddWithValue("@search", search_input);
 
-                    // If count is more then 0, then there are some search results
-                    count = Convert.ToInt32(command.ExecuteScalar().ToString());
-                    if (count > 0) {
-                        //SqlCommand command = new SqlCommand(strCommandText, myConnect);
-                        command.CommandText = "SELECT * FROM [Clothes] WHERE name LIKE @search OR overview LIKE @search";
-
-                        command.ExecuteNonQuery();
-
-                        SqlDataAdapter da = new SqlDataAdapter();
-                        da.SelectCommand = command;
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        Repeater1.DataSource = ds;
-                        Repeater1.DataBind();
-
-                        Label_NoResultsFound.Text = "a";
-                        //Label_NoResultsFound.CssClass = "h3";
-                    } else {
-                        // No results
-                        //Label_NoResultsFound.Text = "No Results Found";
-                        //Label_NoResultsFound.CssClass = "h3";
-                    }
-
-                }*/
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
                 conn.Open();
                 string checksearch = "SELECT COUNT(*) FROM [Clothes] WHERE name LIKE @search OR overview LIKE @search";

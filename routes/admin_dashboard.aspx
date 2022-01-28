@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>Dashboard</h2>
+                            <h2>Clothes</h2>
                         </div>
                     </div>
                 </div>
@@ -170,6 +170,19 @@
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox runat="server" ID="TextBox_link" Text='<%# Eval("link") %>'></asp:TextBox>
+                </EditItemTemplate>
+            </asp:TemplateField>
+
+            <%-- Image --%>
+            <asp:TemplateField>
+                <HeaderTemplate>
+                    <asp:FileUpload runat="server" AllowMultiple="true" accept=".jpg" ID="FileUpload_image" Width="250px"/>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <a style="color:darkcyan;text-decoration:underline;" href='<%# "/product?id=" + Eval("Id") %>'>View Page</a>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <%-- How should make it so I can add & delete image here... --%>
                 </EditItemTemplate>
             </asp:TemplateField>
 

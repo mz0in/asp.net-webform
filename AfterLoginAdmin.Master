@@ -64,7 +64,8 @@
                                         </div>
                                         <div class="header-info-right">
                                             <ul>
-                                                <li><a href="/admindashboard">Admin Dashboard</a></li>
+                                                <li><a href="/admincharts">View Charts</a></li>
+                                                <li><a href="/admindashboard">Manage Clothes</a></li>
                                                 <li><a href="/settings">My Account</a></li>
                                                 <!--
                                                 <li><a href="product_list.html">Wish List</a></li>
@@ -113,18 +114,6 @@
                                                         </ul>
                                                     </li>
                                                     <li><a href="/about">About</a></li>
-                                                    <li><a href="#">Pages</a>
-                                                        <ul class="submenu">
-                                                            <li><a href="login.html">Login</a></li>
-                                                            <li><a href="cart.html">Card</a></li>
-                                                            <li><a href="elements.html">Element</a></li>
-                                                            <li><a href="about.html">About</a></li>
-                                                            <li><a href="confirmation.html">Confirmation</a></li>
-                                                            <li><a href="cart.html">Shopping Cart</a></li>
-                                                            <li><a href="checkout.html">Product Checkout</a></li>
-                                                            <li><a href="Catagori.html">|Catagori|</a></li>
-                                                        </ul>
-                                                    </li>
                                                     <li><a href="/contact">Contact</a></li>
                                                 </ul>
                                             </nav>

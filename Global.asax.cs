@@ -27,12 +27,13 @@ namespace AWAD_Assignment {
             routes.MapPageRoute("About", "about", "~/routes/about.aspx");
             routes.MapPageRoute("Contact", "contact", "~/routes/contact.aspx");
             routes.MapPageRoute("Search", "search", "~/routes/search.aspx");
-            routes.MapPageRoute("AdminDashboard", "admindashboard", "~/routes/admin_dashboard.aspx");
             routes.MapPageRoute("Settings", "settings", "~/routes/settings.aspx");
+            routes.MapPageRoute("AdminDashboard", "admindashboard", "~/routes/admin_dashboard.aspx");
+            routes.MapPageRoute("AdminCharts", "admincharts", "~/routes/admin_charts.aspx");
 
             // Error routes
-            routes.MapPageRoute("NotFound", "404", "~/routes/error404.html");
-            routes.MapPageRoute("ServerError", "500", "~/routes/error500.html");
+            routes.MapPageRoute("NotFound", "404", "~/routes/error/404.aspx");
+            routes.MapPageRoute("ServerError", "500", "~/routes/error/500.html");
         }
         protected void Application_Start(object sender, EventArgs e) {
             HTTP_Endpoints(RouteTable.Routes);

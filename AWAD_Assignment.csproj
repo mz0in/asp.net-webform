@@ -866,6 +866,7 @@
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="routes\about.aspx" />
+    <Content Include="routes\admin_charts.aspx" />
     <Content Include="routes\admin_dashboard.aspx" />
     <Content Include="routes\callback.aspx" />
     <Content Include="routes\cart.aspx" />
@@ -873,7 +874,7 @@
     <Content Include="routes\confirmation.aspx" />
     <Content Include="routes\contact.aspx" />
     <Content Include="routes\error\403.html" />
-    <Content Include="routes\error\404.html" />
+    <Content Include="routes\error\404.aspx" />
     <Content Include="routes\error\408.html" />
     <Content Include="routes\error\500.html" />
     <Content Include="routes\error\error.html" />
@@ -927,6 +928,13 @@
     </Compile>
     <Compile Include="routes\about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="routes\admin_charts.aspx.cs">
+      <DependentUpon>admin_charts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="routes\admin_charts.aspx.designer.cs">
+      <DependentUpon>admin_charts.aspx</DependentUpon>
     </Compile>
     <Compile Include="routes\admin_dashboard.aspx.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>

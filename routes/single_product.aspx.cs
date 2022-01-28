@@ -21,9 +21,9 @@ namespace AWAD_Assignment.routes
                 try {
                     clothes = Clothes.getClothesID(Request.QueryString["id"].ToString());
                 } catch (NullReferenceException) {
-                    Response.Redirect("404");
+                    Response.Redirect(ResolveClientUrl("../404"));
                 }
-                if (clothes == null) Response.Redirect("404");
+                if (clothes == null) Response.Redirect(ResolveClientUrl("../404"));
 
                 Label_Clothes_name.Text = clothes.name;
                 Label_Clothes_price.Text = string.Format("${0:00.00}", clothes.price); //string.Format("{0:00.00}", double.Parse(clothes.price.ToString()));
@@ -69,7 +69,7 @@ namespace AWAD_Assignment.routes
             List<string> image_paths = new List<string>();
 
             // https://www.aspsnippets.com/Articles/Display-Directory-Folder-structure-using-ASPNet-TreeView-control-in-C-and-VBNet.aspx
-            DirectoryInfo di = new DirectoryInfo(Server.MapPath(@"./assets/img/_clothing/carousel/" + clothes.id + "/"));
+            DirectoryInfo di = new DirectoryInfo(Server.MapPath(@"/assets/img/_clothing/carousel/" + clothes.id + "/"));
             foreach (FileInfo f in di.GetFiles()) {
                 image_paths.Add("../assets/img/_clothing/carousel/" + clothes.id + "/" + f.Name);
             }
@@ -93,7 +93,7 @@ namespace AWAD_Assignment.routes
             try {
                 clothes = Clothes.getClothesID(Request.QueryString["id"].ToString());
             } catch (NullReferenceException) {
-                Response.Redirect("404");
+                Response.Redirect(ResolveClientUrl("../404"));
             } // Change to -> DRY CODE 
 
 
