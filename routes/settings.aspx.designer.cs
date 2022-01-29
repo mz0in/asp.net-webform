@@ -175,6 +175,15 @@ namespace AWAD_Assignment.routes {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton_mfa;
 
         /// <summary>
+        /// PlaceHolder_QRCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder_QRCode;
+
+        /// <summary>
         /// Button_UpdateAccount control.
         /// </summary>
         /// <remarks>

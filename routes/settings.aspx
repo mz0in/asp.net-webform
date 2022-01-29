@@ -99,8 +99,9 @@
                             <h3>Security Settings</h3>
                             <div class="row contact_form">
                                 <div class="col-md-12 form-group p_star">
-                                    <asp:Label runat="server" ID="Label_mfa" Text="Current status: Disabled"></asp:Label>
+                                    <asp:Label runat="server" ID="Label_mfa" Text="Current 2FA status: Disabled"></asp:Label>
                                     <asp:LinkButton runat="server" ID="LinkButton_mfa" OnClick="LinkButton_mfa_Click" Text="Disable / Enable" CssClass="btn_1 btn-danger"></asp:LinkButton>
+                                    <asp:PlaceHolder ID="PlaceHolder_QRCode" runat="server"></asp:PlaceHolder>
                                 </div>
 
                             </div>

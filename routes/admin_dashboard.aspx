@@ -77,18 +77,10 @@
         OnRowCommand="GridView_ProductTable_RowCommand" OnRowEditing="GridView_ProductTable_RowEditing" OnRowCancelingEdit="GridView_ProductTable_RowCancelingEdit"
         OnRowUpdating="GridView_ProductTable_RowUpdating" OnRowDeleting="GridView_ProductTable_RowDeleting" ClientIDMode="Static">
         <Columns>
-            <%--<asp:TemplateField HeaderText="ID">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("Id") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox runat="server" ID="TextBox_name" Text='<%# Eval("Id") %>'></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>--%>
             <asp:TemplateField HeaderText="Name">
                 <HeaderTemplate>
                     <asp:Label runat="server" Text="Name"></asp:Label>
-                    <asp:TextBox runat="server" ID="Add_Name"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="Add_Name" CssClass="form-control-lg"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Eval("name") %>'></asp:Label>
@@ -100,7 +92,7 @@
             <asp:TemplateField HeaderText="Quantity">
                 <HeaderTemplate>
                     <asp:Label runat="server" Text="Quantity" Width="100px"></asp:Label>
-                    <asp:TextBox runat="server" ID="Add_Quantity" Width="100px"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="Add_Quantity" Width="100px" CssClass="form-control-sm"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Eval("quantity") %>' Width="100px"></asp:Label>
@@ -112,7 +104,7 @@
             <asp:TemplateField HeaderText="Price">
                 <HeaderTemplate>
                     <asp:Label runat="server" Text="Price" Width="100px"></asp:Label>
-                    <asp:TextBox runat="server" ID="Add_Price" Width="100px"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="Add_Price" Width="100px" CssClass="form-control-sm"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# string.Format("${0:00.00}", double.Parse(Eval("price").ToString()))%>' Width="100px"></asp:Label>
@@ -125,7 +117,7 @@
                 <HeaderTemplate>
                     <asp:Label runat="server" Text="Overview"></asp:Label>
                     <br />
-                    <asp:TextBox runat="server" TextMode="MultiLine" Width="" ID="Add_Overview"></asp:TextBox>
+                    <asp:TextBox runat="server" TextMode="MultiLine" Width="" ID="Add_Overview" CssClass="form-control"></asp:TextBox>
                     <%--<textarea runat="server" style="width:100%" id="Add_Overview"></textarea>--%>
                 </HeaderTemplate>
                 <ItemTemplate>
@@ -138,20 +130,20 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Gender">
                 <HeaderTemplate>
-                    <asp:Label runat="server" Text="Gender" Width="100px"></asp:Label>
-                    <asp:TextBox runat="server" ID="Add_Gender" MaxLength="1" Width="100px"></asp:TextBox>
+                    <asp:Label runat="server" Text="Gender" Width="60px"></asp:Label>
+                    <asp:TextBox runat="server" ID="Add_Gender" MaxLength="1" Width="100px" CssClass="form-control-sm"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# Eval("gender") %>' Width="100px"></asp:Label>
+                    <asp:Label runat="server" Text='<%# Eval("gender") %>' Width="60px"></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox runat="server" ID="TextBox_gender" Text='<%# Eval("gender") %>' Width="100px"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="TextBox_gender" Text='<%# Eval("gender") %>' Width="60px"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Category ID">
                 <HeaderTemplate>
                     <asp:Label runat="server" Text="Category ID" Width="100px"></asp:Label>
-                    <asp:TextBox runat="server" ID="Add_CategoryID" Width="100px"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="Add_CategoryID" Width="100px" CssClass="form-control-sm"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Eval("category_id") %>' Width="100px"></asp:Label>
@@ -163,7 +155,7 @@
             <asp:TemplateField HeaderText="Link">
                 <HeaderTemplate>
                     <asp:Label runat="server" Text="Link"></asp:Label>
-                    <asp:TextBox runat="server" ID="Add_Link"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="Add_Link" CssClass="form-control-sm"></asp:TextBox>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Eval("link") %>'></asp:Label>
@@ -176,7 +168,7 @@
             <%-- Image --%>
             <asp:TemplateField>
                 <HeaderTemplate>
-                    <asp:FileUpload runat="server" AllowMultiple="true" accept=".jpg" ID="FileUpload_image" Width="250px"/>
+                    <asp:FileUpload runat="server" AllowMultiple="true" accept=".jpg" ID="FileUpload_image" Width="250px" CssClass="form-control-file"/>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <a style="color:darkcyan;text-decoration:underline;" href='<%# "/product?id=" + Eval("Id") %>'>View Page</a>

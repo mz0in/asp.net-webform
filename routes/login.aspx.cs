@@ -63,6 +63,11 @@ namespace AWAD_Assignment.routes
                         return;
                     }
 
+                    if (user.mfaEnabled) {
+                        Session["2fa"] = user.email;
+                        Response.Redirect(ResolveClientUrl("../verify2fa"));
+                    }
+
                     // is user admin or not?
                     if (user.isAdmin) {
                         Session["email"] = TextBox_Email.Text; // Set Email session cookies
@@ -70,14 +75,14 @@ namespace AWAD_Assignment.routes
                         // Set Admin masterpage
                         Session["CHANGE_MASTERPAGE"] = "~/AfterLoginAdmin.Master";
                         Session["CHANGE_MASTERPAGE2"] = null;
-                        Response.Redirect(ResolveClientUrl("default.aspx"));
+                        Response.Redirect(ResolveClientUrl("../home"));
 
                     } else { 
                         Session["email"] = TextBox_Email.Text; // Set Email session cookies
                         // Set user masterpage
                         Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
                         Session["CHANGE_MASTERPAGE2"] = null;
-                        Response.Redirect(ResolveClientUrl("default.aspx"));
+                        Response.Redirect(ResolveClientUrl("../home"));
                     }
                 } else {
                     Label_LoginFailure.Text = "Email Adress or Password is incorrect";
