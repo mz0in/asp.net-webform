@@ -16,7 +16,7 @@ namespace AWAD_Assignment
 
             if (IsPostBack) {
                 if (TextBox_Search.Text.Trim().Length > 0 && TextBox_Search.Text != null && TextBox_Search.Text.ToString() != "") {
-                    Response.Redirect("../search?q=" + Server.HtmlEncode(TextBox_Search.Text));
+                    Response.Redirect("/search?q=" + Server.HtmlEncode(TextBox_Search.Text));
                 }
             }
 
