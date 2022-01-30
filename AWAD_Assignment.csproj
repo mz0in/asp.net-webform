@@ -899,7 +899,6 @@
     <Content Include="routes\single_product.aspx" />
     <Content Include="routes\verify2fa.aspx" />
     <Content Include="routes\verify_email.aspx" />
-    <Content Include="TODO.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
