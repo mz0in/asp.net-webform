@@ -153,7 +153,7 @@
                             </asp:ListBox>
                         </div>
 
-                        <div class="add_to_cart" style="margin-top: 20px; margin-bottom: 50px">
+                        <div class="add_to_cart" style="margin-top: 20px;margin-bottom:50px;display:flex;flex-direction:row-reverse;">
                             <!-- <a href="#" class="btn_3">add to cart</a> -->
                             <asp:Button ID="Button_AddToCart" CssClass="btn_3" Text="Add to Cart" OnClick="Button_AddToCart_Click" runat="server" />
                         </div>

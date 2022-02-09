@@ -83,17 +83,6 @@
                     </form>
                 </div>
             </div>
-            <!--
-            <div class="cupon_area">
-                <div class="check_title">
-                    <h2>Have a coupon?
-            <a href="#">Click here to enter your code</a>
-                    </h2>
-                </div>
-                <input type="text" placeholder="Enter coupon code" />
-                <a class="tp_btn" href="#">Apply Coupon</a>
-            </div>
-            -->
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
@@ -165,19 +154,6 @@
                                 <%--<br />--%>
                                 <%--<asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator4" ForeColor="Red" ControlToValidate="TextBox_Address2" ValidationExpression="(((((where|and|set)(\s+[\w\(]+[.]*[\w\)]*\s*)=\s*'?|like\s+'?%?|in\s+\(|top\s*|from|order\s*by|table)\s*)|(values\s*\(.*))(&quot;\s*\+|{\d+}))" ErrorMessage="No SQL injection please"></asp:RegularExpressionValidator>--%>
                             </div>
-                            <!--
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="city" name="city" />
-                                <span class="placeholder" data-placeholder="Town/City"></span>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
-                                    <option value="1">District</option>
-                                    <option value="2">District</option>
-                                    <option value="4">District</option>
-                                </select>
-                            </div>
-                            -->
                             <div class="col-md-12 form-group">
                                 <!-- <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP" /> -->
                                 <asp:TextBox ID="TextBox_Zipcode" TextMode="Phone" TabIndex="7" CssClass="form-control" Placeholder="Postcode/ZIP" runat="server"></asp:TextBox>
@@ -223,13 +199,6 @@
                                             </asp:LinkButton></li>
                                     </ItemTemplate>
                                 </asp:Repeater>
-
-                                <!--
-                                <li><a href="#">Fresh Blackberry<span class="middle">x 02</span><span class="last">$720.00</span></a></li>
-                                <li><a href="#">Fresh Tomatoes<span class="middle">x 02</span><span class="last">$720.00</span></a></li>
-                                <li><a href="#">Fresh Brocoli<span class="middle">x 02</span><span class="last">$720.00</span></a></li>
-                                -->
-
                             </ul>
                             <ul class="list list_2">
                                 <li><a href="#">Subtotal<span><asp:Label runat="server" ID="Label_subtotal"></asp:Label></span></a></li>
@@ -249,8 +218,6 @@
                             </div>
                             <div class="payment_item">
                                 <div class="radion_btn">
-                                    <!-- <input type="radio" id="f-option6" name="selector" /> -->
-                                    <!-- <label for="f-option6">Paypal </label> -->
                                     <asp:RadioButton GroupName="selector" Enabled="false" runat="server" Text="PayPal" />
                                     <img src="../assets/img/product/single-product/card.jpg" alt="" />
                                     <div class="check"></div>
@@ -260,14 +227,8 @@
                                 </p>
                             </div>
                             <div class="creat_account">
-                                <!--
-                                <input type="checkbox" id="f-option4" name="selector" />
-                                <label for="f-option4">I’ve read and accept the </label>
-                                <a href="#">terms & conditions*</a>
-                                -->
                                 <asp:CheckBox runat="server" ID="CheckBox_ToS" Checked="false" Text="I’ve read and accept the terms & conditions*" />
                             </div>
-                            <!-- <a class="btn_3" href="#">Proceed to Payment</a> -->
                             <asp:LinkButton runat="server" CssClass="btn_3" Text="Proceed to Payment" OnClick="LinkButton_Payment_Click" ID="LinkButton_Payment"></asp:LinkButton>
                         </div>
                     </div>

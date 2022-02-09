@@ -38,7 +38,7 @@ namespace AWAD_Assignment.routes {
             } catch { }
 
             if (tb != null) {
-                String chart = "";
+                string chart = "";
                 chart = "<canvas id=\"country-chart\" width=\"100%\" height=\"40\"></canvas>";
                 chart += "<script>";
                 chart += "new Chart(document.getElementById(\"country-chart\"), { type: 'pie', data: {labels: [";
@@ -51,7 +51,7 @@ namespace AWAD_Assignment.routes {
                 chart += "],datasets: [{ data: [";
 
                 // get data from database and add to chart
-                String value = "";
+                string value = "";
                 for (int i = 0; i < tb.Rows.Count; i++)
                     value += tb.Rows[i][2].ToString() + ",";
                 value = value.Substring(0, value.Length - 1);
@@ -80,7 +80,7 @@ namespace AWAD_Assignment.routes {
             } catch { }
 
             if (tb != null) {
-                String chart = "";
+                string chart = "";
                 chart = "<canvas id=\"category-chart\" width=\"100%\" height=\"40\"></canvas>";
                 chart += "<script>";
                 chart += "new Chart(document.getElementById(\"category-chart\"), { type: 'bar', data: {labels: [";
@@ -93,7 +93,7 @@ namespace AWAD_Assignment.routes {
                 chart += "],datasets: [{ data: [";
 
                 // get data from database and add to chart
-                String value = "";
+                string value = "";
                 for (int i = 0; i < tb.Rows.Count; i++)
                     value += tb.Rows[i][2].ToString() + ",";
                 value = value.Substring(0, value.Length - 1);
@@ -115,7 +115,7 @@ namespace AWAD_Assignment.routes {
             string query = "SELECT TOP 3 CONVERT(NVARCHAR(7),PaymentDate,120) [Month], SUM(Amount) [TotalAmount]";
             query += " FROM Sales";
             query += " GROUP BY CONVERT(NVARCHAR(7),PaymentDate,120)";
-            query += " ORDER BY [Month] DESC;";
+            query += " ORDER BY [Month] ASC;";
             SqlCommand cmd = new SqlCommand(query, con);
             DataTable tb = new DataTable();
             try {
@@ -126,7 +126,7 @@ namespace AWAD_Assignment.routes {
             } catch { }
 
             if (tb != null) {
-                String chart = "";
+                string chart = "";
                 chart = "<canvas id=\"sales-chart\" width=\"100%\" height=\"40\"></canvas>";
                 chart += "<script>";
                 chart += "new Chart(document.getElementById(\"sales-chart\"), { type: 'line', data: {labels: [";
@@ -139,7 +139,7 @@ namespace AWAD_Assignment.routes {
                 chart += "],datasets: [{ data: [";
 
                 // get data from database and add to chart
-                String value = "";
+                string value = "";
                 for (int i = 0; i < tb.Rows.Count; i++)
                     value += tb.Rows[i][1].ToString() + ",";
                 value = value.Substring(0, value.Length - 1);

@@ -114,31 +114,15 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="social-container">
-                        <a class="signinFB" href="">
+                        <a class="signinFB" href="JavaScript:void(0);">
                             <img src="../assets/img/_social_login/fbbutton.png" height="60px" />
                             Sign in with Facebook
                         </a>
-                        <%--<a id="signinGoogle" href="">
-                            <img src="../assets/img/_social_login/googlebtn.png" height="60px" />
-                            Sign in with Google
-                        </a>--%>
-                        
-                        
-                        <%--<a id="signinGoogle">
-                            <asp:ImageButton runat="server" ImageUrl="../assets/img/_social_login/googlebtn.png" Height="60px"/>
-                            Sign in with Google
-                        </a>--%>
-
                         <asp:LinkButton runat="server" CssClass="signinGoogle" Text="Sign in with Google" ID="LinkButton_SignInWithGoogle" OnClick="LinkButton_SignInWithGoogle_Click" >
                             <asp:Image runat="server" ImageUrl="../assets/img/_social_login/googlebtn.png" Height="60px"/>
                         </asp:LinkButton>
-
-
-
                     </div>
-
                 </div>
             </div>
         </div>

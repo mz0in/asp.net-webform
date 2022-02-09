@@ -109,21 +109,17 @@
                                             </li>
                                             -->
                                                     <li>
-                                                        <a href="">Women</a>
+                                                        <a href="#">Women</a>
                                                         <ul class="submenu">
                                                             <li><a href="/productsWomen?q=tops">Tops</a></li>
                                                             <li><a href="/productsWomen?q=bottoms">Bottoms</a></li>
-                                                            <li><a href="">Innerwear?</a></li>
-                                                            <li><a href="">Accessories?</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        <a href="">Men</a>
+                                                        <a href="#">Men</a>
                                                         <ul class="submenu">
                                                             <li><a href="/productsMen?q=tops">Tops</a></li>
                                                             <li><a href="/productsMen?q=bottoms">Bottoms</a></li>
-                                                            <li><a href="">Innerwear?</a></li>
-                                                            <li><a href="">Accessories?</a></li>
                                                         </ul>
                                                     </li>
                                                     <li><a href="/about">About</a></li>
