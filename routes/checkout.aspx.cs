@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using Salt_Password_Sample;
 
 namespace AWAD_Assignment.routes {
     public partial class checkout : BasePage {
@@ -23,6 +24,7 @@ namespace AWAD_Assignment.routes {
                 if (Session["email"] != null) {
                 // If user is logged in, complete the form for them and hide div to login/register account
                     theReturningCustomerDiv.Visible = false;
+                    createAccountDiv.Visible = false;
                     var account = Account.GetAccount(Session["email"].ToString());
                     TextBox_FirstName.Text = account.firstname;
                     TextBox_LastName.Text = account.lastname;
@@ -110,6 +112,29 @@ namespace AWAD_Assignment.routes {
                         Session["shipping"] = new string[2] { TextBox_Address1.Text, TextBox_Zipcode.Text };
                     }
                     conn.Close();
+                }
+
+                // Register Account if CreateAccountbox is checked and email entered is not in DB
+                if (Checkbox_AccountCreate.Checked && Account.GetAccount(TextBox_Email.Text) == null) {
+                    using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
+                        sqlConnection.Open();
+                        string query = "INSERT INTO accounts (Id, first_name, last_name, email, emailConfirmed, isAdmin, password, mobile_number, multi_factor_enabled, secret_key, address1, address2, zipcode) values (@id, @first, @last, @email, @emailConfirmed, @admin, @password, @mobile, @multi_factor_enabled, @secret_key, @address1, @address2, @zipcode)";
+                        SqlCommand com = new SqlCommand(query, sqlConnection);
+                        com.Parameters.AddWithValue("@id", Guid.NewGuid().ToString());
+                        com.Parameters.AddWithValue("@first", TextBox_FirstName.Text);
+                        com.Parameters.AddWithValue("@last", TextBox_LastName.Text);
+                        com.Parameters.AddWithValue("@email", TextBox_Email.Text);
+                        com.Parameters.AddWithValue("@emailConfirmed", false);
+                        com.Parameters.AddWithValue("@admin", false);
+                        com.Parameters.AddWithValue("@password", Hash.ComputeHash(passwordCreate.Value, "SHA512", null));
+                        com.Parameters.AddWithValue("@mobile", TextBox_MobileNumber.Text);
+                        com.Parameters.AddWithValue("@multi_factor_enabled", false);
+                        com.Parameters.AddWithValue("@secret_key", DBNull.Value);
+                        com.Parameters.AddWithValue("@address1", TextBox_Address1.Text);
+                        com.Parameters.AddWithValue("@address2", TextBox_Address2.Text);
+                        com.Parameters.AddWithValue("@zipcode", TextBox_Zipcode.Text);
+                        com.ExecuteNonQuery();
+                    }
                 }
 
                 // Stripe payment stuff

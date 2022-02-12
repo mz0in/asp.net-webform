@@ -53,34 +53,9 @@
                 <div class="returning_customer">
                     <div class="check_title">
                         <h2>Returning Customer?
-            <a href="#">Click here to login</a>
+            <a href="/login">Click here to login</a>
                         </h2>
                     </div>
-                    <p>
-                        If you have shopped with us before, please enter your details in the
-          boxes below. If you are a new customer, please proceed to the
-          Billing & Shipping section.
-                    </p>
-                    <form class="row contact_form" action="#" method="post" novalidate="novalidate">
-                        <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="name" name="name" value=" " />
-                            <span class="placeholder" data-placeholder="Username or Email"></span>
-                        </div>
-                        <div class="col-md-6 form-group p_star">
-                            <input type="password" class="form-control" id="password" name="password" value="" />
-                            <span class="placeholder" data-placeholder="Password"></span>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="btn_3">
-                                log in
-                            </button>
-                            <div class="creat_account">
-                                <input type="checkbox" id="f-option" name="selector" />
-                                <label for="f-option">Remember me</label>
-                            </div>
-                            <a class="lost_pass" href="#">Lost your password?</a>
-                        </div>
-                    </form>
                 </div>
             </div>
             <div class="billing_details">
@@ -90,8 +65,6 @@
                         <div class="row contact_form" <%--action="#" method="post" novalidate="novalidate"--%>>
 
                             <div class="col-md-6 form-group p_star">
-                                <!-- <input type="text" class="form-control" id="first" name="name" /> -->
-                                <!-- <span class="placeholder" data-placeholder="First name"></span> -->
                                 <asp:TextBox ID="TextBox_FirstName" CssClass="form-control" TabIndex="1" Placeholder="First Name" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator_FirstName" runat="server" ErrorMessage="Required Field" ForeColor="Red" Text="Required Field" ControlToValidate="TextBox_FirstName"></asp:RequiredFieldValidator>
                                 <br />
@@ -108,8 +81,6 @@
                             </div>
 
                             <div class="col-md-6 form-group p_star">
-                                <!-- <input type="text" class="form-control" id="number" name="number" /> -->
-                                <!-- <span class="placeholder" data-placeholder="Phone number"></span> -->
                                 <asp:TextBox ID="TextBox_LastName" CssClass="form-control" TabIndex="2" Placeholder="Last Name" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator_LastName" runat="server" ErrorMessage="Required Field" ForeColor="Red" Text="Required Field" ControlToValidate="TextBox_LastName"></asp:RequiredFieldValidator>
                                 <br />
@@ -117,8 +88,6 @@
                             </div>
 
                             <div class="col-md-6 form-group p_star">
-                                <!-- <input type="text" class="form-control" id="email" name="compemailany" /> -->
-                                <!-- <span class="placeholder" data-placeholder="Email Address"></span> -->
                                 <asp:TextBox ID="TextBox_Email" TextMode="Email" TabIndex="4" CssClass="form-control" Placeholder="Email Address" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server" ForeColor="Red" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_Email"></asp:RequiredFieldValidator>
                             </div>
@@ -126,10 +95,6 @@
                             <div class="col-md-12 form-group p_star">
                                 <select class="country_select">
                                     <option value="1">Singapore</option>
-                                    <!--
-                                    <option value="2">Country</option>
-                                    <option value="4">Country</option>
-                                    -->
                                 </select>
                             </div>
 
@@ -138,38 +103,33 @@
                                 <!-- <span class="placeholder" data-placeholder="Address line 01"></span> -->
                                 <asp:TextBox ID="TextBox_Address1" TextMode="MultiLine" TabIndex="5" CssClass="form-control" Placeholder="Address line 01" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_MobileNumber"></asp:RequiredFieldValidator>
-                                <%--<br />--%>
-                                <%--<asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator1" ForeColor="Red" ControlToValidate="TextBox_Address1" ValidationExpression="(?:<script(?:\s[^<>]+)*>.*<\/script>)|(?:<.+(?:\s[^<>]+)*(?:\s(?:onload|onfocus|onerror)=(?:&quot;|').+(?:&quot;|'))(?:\s[^<>]+)*\/?>(?:<\/.+>)?)|(?:<.+(?:\s[^<>]+)*(?:\s[^<>]+=(?:&quot;|')javascript:.+(?:&quot;|'))(?:\s[^<>]+)*\/?>(?:<\/.+>)?)" ErrorMessage="No XSS please"></asp:RegularExpressionValidator>--%>
-                                <%--<br />--%>
-                                <%--<asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator2" ForeColor="Red" ControlToValidate="TextBox_Address1" ValidationExpression="(((((where|and|set)(\s+[\w\(]+[.]*[\w\)]*\s*)=\s*'?|like\s+'?%?|in\s+\(|top\s*|from|order\s*by|table)\s*)|(values\s*\(.*))(&quot;\s*\+|{\d+}))" ErrorMessage="No SQL injection please"></asp:RegularExpressionValidator>--%>
                             </div>
 
                             <div class="col-md-12 form-group p_star">
-                                <!-- <input type="text" class="form-control" id="add2" name="add2" /> -->
-                                <!-- <span class="placeholder" data-placeholder="Address line 02"></span> -->
                                 <asp:TextBox ID="TextBox_Address2" TextMode="MultiLine" TabIndex="6" CssClass="form-control" Placeholder="Address line 02" runat="server"></asp:TextBox>
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_MobileNumber"></asp:RequiredFieldValidator>--%>
-                                <%--<br />--%>
-                                <%--<asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator3" ForeColor="Red" ControlToValidate="TextBox_Address2" ValidationExpression="(?:<script(?:\s[^<>]+)*>.*<\/script>)|(?:<.+(?:\s[^<>]+)*(?:\s(?:onload|onfocus|onerror)=(?:&quot;|').+(?:&quot;|'))(?:\s[^<>]+)*\/?>(?:<\/.+>)?)|(?:<.+(?:\s[^<>]+)*(?:\s[^<>]+=(?:&quot;|')javascript:.+(?:&quot;|'))(?:\s[^<>]+)*\/?>(?:<\/.+>)?)" ErrorMessage="No XSS please"></asp:RegularExpressionValidator>--%>
-                                <%--<br />--%>
-                                <%--<asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator4" ForeColor="Red" ControlToValidate="TextBox_Address2" ValidationExpression="(((((where|and|set)(\s+[\w\(]+[.]*[\w\)]*\s*)=\s*'?|like\s+'?%?|in\s+\(|top\s*|from|order\s*by|table)\s*)|(values\s*\(.*))(&quot;\s*\+|{\d+}))" ErrorMessage="No SQL injection please"></asp:RegularExpressionValidator>--%>
                             </div>
+
                             <div class="col-md-12 form-group">
-                                <!-- <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP" /> -->
                                 <asp:TextBox ID="TextBox_Zipcode" TextMode="Phone" TabIndex="7" CssClass="form-control" Placeholder="Postcode/ZIP" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" runat="server" ErrorMessage="Required Field" Text="Required Field" ControlToValidate="TextBox_Zipcode"></asp:RequiredFieldValidator>
                                 <br />
                                 <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator5" ForeColor="Red" ControlToValidate="TextBox_Zipcode" ValidationExpression="^\d{6}$" ErrorMessage="Invalid Zipcode/Postal Code"></asp:RegularExpressionValidator>
                             </div>
 
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <input type="checkbox" id="f-option2" name="selector" />
-                                    <label for="f-option2">Create an account?</label>
+                            <div runat="server" id="createAccountDiv">
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account">
+                                        <asp:CheckBox runat="server" ID="Checkbox_AccountCreate" Checked="false" Text="Create an account?" ClientIDMode="Static" />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-12 form-group p_star" id="passwordbox" style="display:none">
+                                <input type="password" class="form-control" id="passwordCreate" name="passwordCreate" value="" placeholder="Enter Password" runat="server">
+                                <span id="validpassword" style="color:red;"></span>
+                            </div>
+
+                        <div class="col-md-12 form-group">
                                 <!--
                                 <div class="creat_account">
                                     <h3>Shipping Details</h3>
@@ -236,5 +196,29 @@
             </div>
         </div>
     </section>
+    <script>
+        const createUser = document.getElementById("Checkbox_AccountCreate");
+        const password = document.getElementById("body_passwordCreate")
+        const validpassword = document.getElementById("validpassword")
+
+        createUser.addEventListener("change", function (e) {
+            if (this.checked) {
+                // alert("i am checked");
+                document.getElementById("passwordbox").style.display = "block";
+            } else {
+                // alert("i am not checked")
+                document.getElementById("passwordbox").style.display = "none";
+            }
+        });
+
+        password.addEventListener("keydown", (e) => {
+            if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password.value)) validpassword.innerText = ""
+            else validpassword.innerText = "Enter a stronger password please"
+        })
+        password.addEventListener("keyup", (e) => {
+            if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password.value)) validpassword.innerText = ""
+            else validpassword.innerText = "Enter a stronger password please"
+        })
+    </script>
     <!--================End Checkout Area =================-->
 </asp:Content>
