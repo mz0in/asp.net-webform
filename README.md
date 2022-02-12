@@ -1,6 +1,6 @@
-### This is an e-commerce application that sells apparel using ASP.NET Web Forms
+## This is an e-commerce application that sells apparel using ASP.NET Web Forms
 
-#### Features
+### Features
 - Able to search clothes name
 - Interactive Carrousel displaying images
 - Shopping Cart & Stripe checkout
@@ -17,9 +17,21 @@
   - Bar char see which is the most popular category
 
 
-#### Limitations
+### Limitations
 - Unable to purchase same clothe but different size/colour - Only 1 type 
 - There is no pagination
 - There is no purchase history for users
 - There is no description, only overview
 - There is no wishlist for users
+
+
+## Before running this application
+
+Inside App_Data 
+- Create a database file named **Database1.mdf**
+- Run script.sql, this creates all the tables, an admin account with email: `admin@email.com` and password: `admin` and a dummy row for most tables
+- Run storedprocedure.sql, this creates the CRUD for products
+
+Create a directory in `./assets/img/_clothing/carousel/00000000-0000-4000-A000-111111111111` <br>
+All the images will be stored inside `./assets/img/_clothing/carousel/{productID}/` directory
+
