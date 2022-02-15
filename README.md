@@ -19,10 +19,11 @@
 
 ### Limitations
 - Unable to purchase same clothe but different size/colour - Only 1 type 
-- There is no pagination
-- There is no purchase history for users
+- There is no pagination for products 
+- Customers are not able to view their purchase history
 - There is no description, only overview
-- There is no wishlist for users
+- There is no wishlist
+- Newsletter is not implemented
 
 
 ## Before running this application
@@ -34,4 +35,3 @@ Inside App_Data
 
 Create a directory in `./assets/img/_clothing/carousel/00000000-0000-4000-A000-111111111111` <br>
 All the images will be stored inside `./assets/img/_clothing/carousel/{productID}/` directory
-
