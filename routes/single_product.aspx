@@ -188,7 +188,7 @@
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">Overview</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Customer Reviews(<asp:Label runat="server" ID="Label_ReviewCount"></asp:Label>)</a>
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Customer Reviews (<asp:Label runat="server" ID="Label_ReviewCount"></asp:Label>)</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="false">Additional information</a>
