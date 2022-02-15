@@ -32,6 +32,7 @@ CREATE TABLE [dbo].[Clothes] (
     [gender]      CHAR (1)      NOT NULL,
     [category_id] INT           NOT NULL,
     [link]        VARCHAR (225) NOT NULL,
+    [DateAdded] DATE NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_Clothes_ToTable] FOREIGN KEY ([category_id]) REFERENCES [dbo].[Category] ([Id])
 );
@@ -83,9 +84,9 @@ INSERT INTO [dbo].[Category] ([Id], [Name], [count]) VALUES (12, N'Sweaters', 0)
 INSERT INTO [dbo].[Category] ([Id], [Name], [count]) VALUES (13, N'Sweats', 0)
 
 -- Create test product
-INSERT INTO [dbo].[Clothes] ([Id], [name], [quantity], [price], [overview], [gender], [category_id], [link]) 
+INSERT INTO [dbo].[Clothes] ([Id], [name], [quantity], [price], [overview], [gender], [category_id], [link], [dateAdded]) 
 VALUES (N'00000000-0000-4000-A000-111111111111', N'Test Product', 99, CAST(99.9000 AS Money), N'- Soft and comfortable clothing.
-- This should not be with production.', N'M', 8, N'http://localhost.com/product?id=00000000-0000-4000-A000-111111111111')
+- This should not be with production.', N'M', 8, N'http://localhost.com/product?id=00000000-0000-4000-A000-111111111111', '2022/01/01')
 
 -- Create First country
 INSERT INTO [dbo].[Countries] ([Id], [country], [count]) VALUES (N'8930b50c-cf3c-4fa1-a765-1aac69d03c29', N'SG', 1)

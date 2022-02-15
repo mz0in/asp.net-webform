@@ -51,9 +51,7 @@ namespace AWAD_Assignment.routes
                     // Remove No results found
                     Label_NoResultsFound.Visible = false;
                     Label_NoResultsFound.Text = "";
-                    Debug.WriteLine("--> " + Label_NoResultsFound.Text);
                 }
-                //*/
 
             } else {
                 //Return absolute path with params "q"

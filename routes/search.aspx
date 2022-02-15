@@ -56,7 +56,7 @@
                                     <div class="single-product mb-60">
                                         <div class="product-img">
                                             <!-- <img src="../assets/img/categori/product1.png" alt=""> -->
-<asp:ImageButton ID="ImageButton_men_TBD" PostBackUrl='<%# ResolveUrl("../product?id=" + Eval("Id"))%>' ImageUrl='<%# "../assets/img/_clothing/carousel/"+Eval("Id")+"/1.jpg"%>' Width="370px" Height="403px" runat="server"/>
+                                            <asp:ImageButton ID="ImageButton_men_TBD" PostBackUrl='<%# ResolveUrl("../product?id=" + Eval("Id"))%>' ImageUrl='<%# "../assets/img/_clothing/carousel/"+Eval("Id")+"/1.jpg"%>' Width="370px" Height="403px" runat="server" />
 
                                             <!--
                                             <div class="new-product">
@@ -81,7 +81,8 @@
                                             </h4>
                                             <div class="price">
                                                 <ul>
-                                                    <li><asp:Label ID="Label_price" runat="server" Text='<%# String.Format("${0:00.00}", double.Parse(Eval("price").ToString()))%>'></asp:Label></li>
+                                                    <li>
+                                                        <asp:Label ID="Label_price" runat="server" Text='<%# String.Format("${0:00.00}", double.Parse(Eval("price").ToString()))%>'></asp:Label></li>
                                                     <%--<li class="discount">$60.00</li>--%>
                                                 </ul>
                                             </div>
@@ -89,10 +90,10 @@
                                     </div>
                                 </div>
                             </ItemTemplate>
-                        </asp:Repeater>                        
+                        </asp:Repeater>
                     </div>
                 </div>
-                <div style="text-align:center;">
+                <div style="text-align: center;">
                     <asp:Label runat="server" CssClass="h3" Text="No Results Found" ID="Label_NoResultsFound"></asp:Label>
                 </div>
             </div>

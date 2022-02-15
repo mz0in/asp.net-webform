@@ -61,44 +61,46 @@ namespace AWAD_Assignment.routes {
             try {
                 if (e.CommandName == "Add") {
                     using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString)) {
-                        connection.Open();
-                        string query = "INSERT INTO Clothes (id, name, quantity, price, overview, gender, category_id, link) VALUES (@id, @name, @quantity, @price, @overview, @gender, @category_id, @link)";
-                        SqlCommand sql = new SqlCommand(query, connection);
-                        string id = Guid.NewGuid().ToString();
-                        sql.Parameters.AddWithValue("@id", id);
-                        sql.Parameters.AddWithValue("@name", (GridView_ProductTable.HeaderRow.FindControl("Add_Name") as TextBox).Text.Trim());
-                        sql.Parameters.AddWithValue("@quantity", Convert.ToInt32((GridView_ProductTable.HeaderRow.FindControl("Add_Quantity") as TextBox).Text.Trim()));
-                        sql.Parameters.AddWithValue("@price", Convert.ToDouble((GridView_ProductTable.HeaderRow.FindControl("Add_Price") as TextBox).Text.Trim()));
-                        sql.Parameters.AddWithValue("@overview", (GridView_ProductTable.HeaderRow.FindControl("Add_Overview") as TextBox).Text.Trim());
-                        sql.Parameters.AddWithValue("@gender", (GridView_ProductTable.HeaderRow.FindControl("Add_Gender") as TextBox).Text.Trim().ToUpper());
-                        sql.Parameters.AddWithValue("@category_id",  Convert.ToInt32((GridView_ProductTable.HeaderRow.FindControl("Add_CategoryID") as TextBox).Text.Trim()));
-                        sql.Parameters.AddWithValue("@link", (GridView_ProductTable.HeaderRow.FindControl("Add_Link") as TextBox).Text.Trim());
-                        //sql.Parameters.AddWithValue("@", );
-                        sql.ExecuteNonQuery();
+                        using (SqlCommand sql = new SqlCommand("Product_CRUD", connection)) {
+                            connection.Open();
+                            sql.Parameters.AddWithValue("@ACTION", "INSERT");
+                            sql.CommandType = CommandType.StoredProcedure;
+                            string id = Guid.NewGuid().ToString();
+                            sql.Parameters.AddWithValue("@id", id);
+                            sql.Parameters.AddWithValue("@name", (GridView_ProductTable.HeaderRow.FindControl("Add_Name") as TextBox).Text.Trim());
+                            sql.Parameters.AddWithValue("@quantity", Convert.ToInt32((GridView_ProductTable.HeaderRow.FindControl("Add_Quantity") as TextBox).Text.Trim()));
+                            sql.Parameters.AddWithValue("@price", Convert.ToDouble((GridView_ProductTable.HeaderRow.FindControl("Add_Price") as TextBox).Text.Trim()));
+                            sql.Parameters.AddWithValue("@overview", (GridView_ProductTable.HeaderRow.FindControl("Add_Overview") as TextBox).Text.Trim());
+                            sql.Parameters.AddWithValue("@gender", (GridView_ProductTable.HeaderRow.FindControl("Add_Gender") as TextBox).Text.Trim().ToUpper());
+                            sql.Parameters.AddWithValue("@category_id", Convert.ToInt32((GridView_ProductTable.HeaderRow.FindControl("Add_CategoryID") as TextBox).Text.Trim()));
+                            sql.Parameters.AddWithValue("@link", (GridView_ProductTable.HeaderRow.FindControl("Add_Link") as TextBox).Text.Trim());
+                            sql.Parameters.AddWithValue("@today", DateTime.Now);
+                            sql.ExecuteNonQuery();
 
-                        // Create directory for images
-                        string path = Server.MapPath(@"/assets/img/_clothing/carousel/" + id);
-                        if (!Directory.Exists(path)) {
-                            Directory.CreateDirectory(path);
-                        }
-
-                        // Save Images
-                        StringBuilder files = new StringBuilder();
-                        FileUpload images = (GridView_ProductTable.HeaderRow.FindControl("FileUpload_image") as FileUpload);
-                        try {
-                            if (images.HasFiles) {
-
-                                foreach (var image in images.PostedFiles) {
-
-                                    // Check if "1.jpg" exists, if not rename the image to it - Saving images
-                                    if (!File.Exists(Path.Combine(path, "1.jpg"))) image.SaveAs(Path.Combine(path,"1.jpg"));
-                                    else image.SaveAs(Path.Combine(path, image.FileName));
-                                }
+                            // Create directory for images
+                            string path = Server.MapPath(@"/assets/img/_clothing/carousel/" + id);
+                            if (!Directory.Exists(path)) {
+                                Directory.CreateDirectory(path);
                             }
-                        } catch (Exception err ) {
-                            Debug.WriteLine(err);
+
+                            // Save Images
+                            StringBuilder files = new StringBuilder();
+                            FileUpload images = (GridView_ProductTable.HeaderRow.FindControl("FileUpload_image") as FileUpload);
+                            try {
+                                if (images.HasFiles) {
+
+                                    foreach (var image in images.PostedFiles) {
+
+                                        // Check if "1.jpg" exists, if not rename the image to it - Saving images
+                                        if (!File.Exists(Path.Combine(path, "1.jpg"))) image.SaveAs(Path.Combine(path, "1.jpg"));
+                                        else image.SaveAs(Path.Combine(path, image.FileName));
+                                    }
+                                }
+                            } catch (Exception err) {
+                                Debug.WriteLine(err);
+                            }
+                            GetAllClothes();
                         }
-                        GetAllClothes();
                     }
                 }
             } catch (SqlException err) {

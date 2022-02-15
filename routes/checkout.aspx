@@ -5,10 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <style>
-        #returning_customer_session_management_div {
-        }
-    </style>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Preloader" runat="server">
@@ -58,6 +54,7 @@
                     </div>
                 </div>
             </div>
+            <br />
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">

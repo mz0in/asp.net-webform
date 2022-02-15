@@ -9,7 +9,8 @@ CREATE PROCEDURE [dbo].[Product_CRUD]
 	@overview TEXT = null,
 	@gender CHAR (1) = null,
 	@category_id INT = null,
-	@link VARCHAR (225) = null
+	@link VARCHAR (225) = null,
+	@today date = null
 
 AS
 BEGIN
@@ -24,7 +25,7 @@ BEGIN
 	-- INSERT
 	IF @action = 'INSERT'
 	BEGIN
-		INSERT INTO Clothes (Id, name, quantity, price, overview, gender, category_id, link) VALUES (@Id, @name, @quantity, @price, @overview, @gender, @category_id, @link)
+		INSERT INTO Clothes (Id, name, quantity, price, overview, gender, category_id, link, dateAdded) VALUES (@Id, @name, @quantity, @price, @overview, @gender, @category_id, @link, @today)
 	END
 
 	-- UPDATE

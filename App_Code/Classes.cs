@@ -23,6 +23,7 @@ public class Clothes {
     private char _gender;
     private int _category_id;
     private string _link;
+    private DateTime _dateAdded;
 
     // GET / SET
     public string id { get { return _id; } }
@@ -33,7 +34,8 @@ public class Clothes {
     public char gender { get { return _gender; } set { _gender = value; } }
     public int category_id { get { return _category_id; } set { _category_id = value; } }
     public string link { get { return _link; } }
-    public Clothes(string id, string name, int quantity, decimal price, string overview, char gender, int category_id, string link) {
+    public DateTime DateAdded { get => _dateAdded; }
+    public Clothes(string id, string name, int quantity, decimal price, string overview, char gender, int category_id, string link, DateTime dateAdded) {
         this._id = id;
         this._name = name;
         this._quantity = quantity;
@@ -42,14 +44,16 @@ public class Clothes {
         this._gender = gender;
         this._category_id = category_id;
         this._link = link;
+        this._dateAdded = dateAdded;
     }
     public static Clothes getClothesID(string clothesID) {
-        Clothes prodDetail_IDK = null;
+        Clothes clothingObj;
 
         int quantity, category_id;
         string id, name, overview, link;
         decimal price;
         char gender;
+        DateTime dateAdded;
 
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
         SqlCommand cmd = new SqlCommand("select * from Clothes WHERE ID = @cid", conn);
@@ -67,17 +71,18 @@ public class Clothes {
             gender = char.Parse(dr["gender"].ToString());
             category_id = int.Parse(dr["category_id"].ToString());
             link = dr["link"].ToString();
+            dateAdded = DateTime.Parse(dr["dateAdded"].ToString());
 
-            prodDetail_IDK = new Clothes(id, name, quantity, price, overview, gender, category_id, link);
+            clothingObj = new Clothes(id, name, quantity, price, overview, gender, category_id, link, dateAdded);
         } else {
-            prodDetail_IDK = null;
+            clothingObj = null;
         }
 
         conn.Close();
         dr.Close();
         dr.Dispose();
 
-        return prodDetail_IDK;
+        return clothingObj;
     }
 }
 
