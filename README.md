@@ -35,3 +35,5 @@ Inside App_Data
 
 Create a directory in `./assets/img/_clothing/carousel/00000000-0000-4000-A000-111111111111` <br>
 All the images will be stored inside `./assets/img/_clothing/carousel/{productID}/` directory
+
+Rename `apikeys.json.template` to `apikeys.json` and add your API keys
